@@ -1,0 +1,9 @@
+*.log
+*.aux
+*.toc 
+*.txt
+*.doc
+*.c
+*.zip
+*.out
+*sw*
