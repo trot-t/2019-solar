@@ -1,0 +1,241 @@
+\documentclass[a4paper,14pt]{article}
+\usepackage{lscape}
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+        \geometry{top=25mm}
+        \geometry{bottom=30mm}
+        \geometry{left=30mm}
+        \geometry{right=20mm}
+ %
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsmath}
+\usepackage{float}
+\usepackage[unicode, pdftex]{hyperref}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\usetikzlibrary{calc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amssymb,amsmath}
+\usepackage{float}
+\usepackage[unicode, pdftex]{hyperref}
+
+\usepackage{tikz}
+\usepackage{rotating}
+%\usepackage[landscape]{geometry}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage{lipsum}
+\usepackage{nccmath}
+\usepackage{caption}
+\usepackage{siunitx}
+%\usepackage[american,cuteinductors,smartlabels]{circuitikz}
+%\usepackage[backend=biber]{biblatex}
+
+\usepackage[]{hyperref}
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+%\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{tripoles/thyristor/width=0.8}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+
+\ctikzset{resistor = european}
+\ctikzset{inductor = american}
+\ctikzset{tripoles/thyristor/height=0.55}
+
+\ctikzset{bipoles/cuteindictor/coils/.initial=3}
+\ctikzset{bipoles/americanindictor/coils/.initial=3}
+\ctikzset{bipoles/cuteindictor/coils/.initial=3}
+\ctikzset{bipoles/americanindictor/coils/.initial=3}
+\hypersetup{
+colorlinks=false,
+}
+\usepackage{textcomp}
+
+\begin{document}
+
+
+\section{Research of unmanaged rectifiers and filters}
+
+The aim of the work is studying the characteristics of various options for uncontrolled circuits.
+rectifiers of single and three-phase voltages and the influence of smoothing filters on their operation.
+
+\subsection{Lab Description}
+
+At the laboratory bench (Fig. \ref{labsetup2}) using the appropriate switch toggle switches
+You can explore the following rectifier circuits:
+
+\begin{itemize}
+	\item single-phase half-wave;
+	\item single-phase one-half-wave with a shunt diode;
+	\item single-phase two-half-period with the deduced zero point on secondary winding 
+		of the converter transformer;
+\item single-phase bridge;
+\item three-phase with zero output;
+\item three-phase bridge.
+\end{itemize}
+
+To smooth the ripple of the load current at the output of the rectifiers, one of the following 
+can be switched on filter options: inductive ($L$-filter), capacitive ($C$-filter), $L$-shaped ($CL$- and $LC$-filter) 
+and $\Pi$-shaped ($CLC$ filter).
+
+The rectifiers are powered by a $T4$ transformer connected to the network through $T1-TZ$ autotransformers,
+by which the required value of the supply voltage is set. The whole lab bench is turned on by using $Q1$.
+
+To obtain the desired rectifier circuit, it is necessary to put in the appropriate positions
+$S1$, $S3$ and $S11-S16$ switches and switch $S17$. So, for example, to obtain a three-phase bridge circuit, 
+it is necessary turn on $S1$ and $S11-S16$, and set the switch $S17$ to the upper position. 
+By means of switches $S4-S6$ an additional inductance ($L1-L3$) can be included in the circuit of each phase 
+of the AC rectifier current.
+
+The type and parameters of the smoothing filter are selected by switches $S7-S10$ and switch $S19$.
+
+The load resistance is changed by tunting the resistor $R3$ with switch $S18$ and regulation of resistance $R2$.
+
+The alternating voltage at the input of the rectifier is measured with a voltmeter $PV1$, connected to each 
+of the phases via switch $S2$.
+
+With the help of ammeter $PA1$ and wattmeter $PW$, the current and power of one of the primary windings of 
+transformer $T4$ are measured; the total active power consumed by the rectifier is proportional to 
+the number of windings used transformer $T4$.
+
+Voltmeter $PV2$ and ammeters $PA1$, $PA3$ are designed to measure the voltage and current of the secondary (valve) 
+winding of transformer $T4$. Moreover, $PA2$ (electromagnetic system) measures the effective value, and $PA3$ 
+-- the average value.
+Similarly, to measure the voltage and load current, two pairs of instruments $PV4$, $PV5$ and $PA4$, $PA5$, 
+are used, in each of which one determines the effective and the other the average value of the measured values.
+
+\begin{landscape}
+        \hspace{-3cm}
+        \vspace{1cm}
+\begin{figure}[ht!]
+\include{schem2}
+\caption{Laboratory arrangement}
+\label{labsetup2}
+\end{figure}
+\end{landscape}
+
+\subsection{The task}
+
+\begin{enumerate}
+	\item For rectifier schemes specified by the teacher, smoothing filter parameters and input variable values
+of AC voltage calculate and determine experimentally:
+
+\begin{itemize}
+\item the relationship between the values of voltages ($E_{d0}/E_{2ph.rms}$) 
+	and currents ($I_{2ph.rms} / I_d$, $I_{2ph.rms.avr.} / I_d$)  at the input and output rectifier circuits, 
+where $E_d0$ is the rectified EMF of the rectifier; $E_{2ph.rms}$ - phase EMF of the valve winding
+transformer; $I_{2ph.rms}$ and $I_{2ph.rms.avg}$ -- current and average current values of the phase winding 
+of the transformer; $I_d$ is the average value of the rectified current;
+
+\item external characteristics $U_d = f (I_d)$;
+
+\item the dependence of the smoothing coefficients of the filters from the load current 
+	$K_{smooth} = f (I_d)$.
+\end{itemize}
+
+	Dependencies $U_d = f (I_d)$ and $K_{smooth} = f (I_d)$ are presented in the form of graphs.
+
+\item Draw from the oscilloscope screen the shapes of the curves of rectified voltages and currents 
+of the investigated options of rectifier circuits and smoothing filters.
+
+\item For a single-phase rectifier circuit specified by the teacher with and without inductive filter, determine
+experimentally and construct the energy characteristics $\eta = f (I_d), \lambda = f (I_d)$. Rectifier efficiency
+determine by indicators of instruments and current and average values of rectified voltages and currents.
+\end{enumerate}
+
+\subsection{Methodological instructions for the performance of work}
+
+\begin{enumerate}
+\item The calculated value of the relationship between rectified and phase voltage for half-wave rectifier circuits
+for $m> 1$ is determined by the expression
+
+$$
+		\frac{E_{d0}}{E_{2ph.rms}} = \frac{m}{\pi} \sqrt{2}\sin\frac{\pi}{m}
+$$
+where $E_{2ph.rms}$ is the effective value of the phase voltage of the valve windings of the transformer; 
+$m$ is the number of rectifier phases (number of ripples over the network period).
+
+For full-bridge rectifier circuits, the value of this ratio is twiced.
+
+\item The calculated values of the ratios of average and effective values of phase currents to rectified current for
+half-bridge rectifier circuits (for $m> 1$) are:
+$$
+  \frac{I_{2ph.rms\:\:avr}}{I_d} = \frac{1}{m}; \frac{I_{2ph.rms}}{I_d} = \frac{1}{\sqrt{m}}.
+$$
+
+For full-bridge rectifier circuits, these relations are:
+$$
+    \frac{I_{2ph.rms\:\:avr}}{I_d} = 0; \frac{I_{2ph.rms}}{I_d} = \frac{2}{\sqrt{m}}.
+$$		
+
+
+\item The experimental values of the ratios $E_{d0} / E_{2ph.rms}$ should be determined at maximum values
+rectified current according to the voltmeter of the magnetoelectric system, and the experimental values
+ratios of currents should be determined at maximum values of the inductance of the $L$-filter and the load current.
+
+\item The calculation of the external characteristics of the zero rectifier circuits with active-inductive load 
+should be performed according to the equation
+$$
+		U_d = E_{d0} -I_d\left( R_{tr} + R_{dyn.valve} + R_{reactor} + R_{comm}\right) - U_0
+$$
+
+where $R_{tr}$ is the total resistance of the transformer phase, reduced to its secondary winding:
+$R_{reactor}$ -- active resistance of the inductor winding, $R_{dyn.valve}$ -- dynamic resistance of the valve;
+		${\displaystyle R_{comm}=\frac{m\xi_a}{2\pi}}$ 
+-- switching resistance; $\xi_a$ is the reduced inductive reactance of the transformer;
+$U_0$ is the threshold voltage of the valve.
+
+For full-bridge rectifier circuits, the values of $R_{tr}$, $R_{dyn.valve}$, $R_comm$ and $U_0$ will doubled.
+
+Experimental external characteristics are measured by the average voltage values
+and current for all given variants of rectifier and filter circuits.
+
+Required to calculate the parameters of the rectification scheme are given in the table located on the front panel 
+of the stand.
+
+\item The calculated value of the smoothing coefficient for the inductive filter is determined by the expression
+$$
+		k_{smooth} = \frac{2\pi f_p L}{R_{load}}
+$$
+
+
+where $f_p$ is the ripple frequency of the rectified voltage; $L$ is the inductance of the filter;
+$R_{load}$ is the load resistance of the rectifier.
+
+The value of the smoothing coefficient of the $L$-shaped $LC$ filter can be determined by the formula
+
+$$
+K_{smooth} \cong (2\pi f_p)^2 LC
+$$
+
+where $C$ is the filter capacity.
+
+For an experimental study of pulsations, an oscilloscope can be used.
+\end{enumerate}
+
+\subsection{The content of the report}
+
+The report should include:
+\begin{enumerate}
+	\item scheme of the experimental setup and its brief description;
+	\item calculations of given parameters and characteristics $K_{smooth} = f(I_d)$;
+	\item tables of experimental observations;
+	\item graphs Ud u003d f (Id) obtained by calculation and experimentally;
+	\item waveforms of rectified voltage curves;
+	\item conclusions comparing the results of theoretical and experimental studies.
+\end{enumerate}
+\end{document}
