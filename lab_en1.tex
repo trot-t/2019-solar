@@ -1,0 +1,286 @@
+\documentclass[a4paper,14pt]{article} 
+\usepackage{lscape}
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+        \geometry{top=25mm}
+        \geometry{bottom=30mm}
+        \geometry{left=30mm}
+        \geometry{right=20mm}
+ %
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsmath}
+\usepackage{float}
+\usepackage[unicode, pdftex]{hyperref}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\usetikzlibrary{calc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amssymb,amsmath}
+\usepackage{float}
+\usepackage[unicode, pdftex]{hyperref}
+
+\usepackage{tikz}
+\usepackage{rotating}
+%\usepackage[landscape]{geometry}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage{lipsum}
+\usepackage{nccmath}
+\usepackage{caption}
+\usepackage{siunitx}
+%\usepackage[american,cuteinductors,smartlabels]{circuitikz}
+%\usepackage[backend=biber]{biblatex}
+
+\usepackage[]{hyperref}
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+%\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{tripoles/thyristor/width=0.8}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+
+\ctikzset{resistor = european}
+\ctikzset{inductor = american}
+\ctikzset{tripoles/thyristor/height=0.55}
+\ctikzset{tripoles/thyristor/height 2=0.4}
+%\ctikzset{tripoles/thyristor/width=0.35} 
+\ctikzset{tripoles/thyristor/diode width left=0.35}
+\ctikzset{tripoles/thyristor/diode width right=0.35}
+
+\ctikzset{bipoles/cuteindictor/coils/.initial=3}
+\ctikzset{bipoles/americanindictor/coils/.initial=3}
+\ctikzset{bipoles/cuteindictor/coils/.initial=3}
+\ctikzset{bipoles/americanindictor/coils/.initial=3}
+\hypersetup{
+colorlinks=false,
+}
+\usepackage{textcomp}
+
+\begin{document}
+
+\section{Research of characteristics of power semiconductor devices}
+
+The main intension of the work is to give hands on experience for students 
+with the classification system of power semiconductor devices (SPD),
+methods of testing and experimental study of the characteristics of a thyristor.
+
+\subsection{Lab Description}
+
+The laboratory setup consists of two power sources for the power circuit of the SPD for drawing their current-voltage
+characteristics in open and closed states, a direct current source for powering the control circuit
+tested SP and protection and blocking circuits.
+
+The lab is turned on by the switch $S1$ (fig. \ref{labsetup}), and the preparation of the junction of one of two sources
+power supply circuit power supply -- by connection the $XP1$ plug connector in the socket $XS1$ or $XS2$ and turn
+switch $S4$ to the appropriate position. The SPD under review (thyristor VS1) is connected to terminals $X1-X4$.
+
+The voltage and current of the power circuit of the SPP are regulated by the T1 autotransformer. 
+SPD control current adjustment
+carried out by potentiometer $R1$ (roughly) and rheostat $R2$ (accurately). Values  control current and voltage
+are determined by a voltmeter $PVЗ$ and an ammeter $PA3$.
+
+The power supply circuit of the SPD under the studying of its characteristics 
+in the open state is carried out through transformer $TK$. 
+To do this, $XP1$ is connected to $XS2$, and switch $S4$ is set to the lower position.
+The half-wave form of voltage and current of the SPD, necessary for characterization, 
+is provided by the $VD5$ diode
+and the sinusoidality of the current curve is achieved by the diodes $VD6$, $VD7$ 
+(creating a circuit for the flow of current
+in the second (non-working) half-period of the transformer voltage $T3$ and excluding due to this bias
+of its core by direct current) and inductance of the inductor $L$, 
+(limiting the value and improving the current transformer shape). 
+The average values of voltage and current of the SPD are determined by a $PV2$ voltmeter
+and ammeter $PA2$. To observe the curves of the anode voltage and current, 
+the input of the oscilloscope is connected
+to terminals $X8-X9$ and $X8-X10$, respectively.
+
+When examining the characteristics of the SPD in the closed state, $XP1$ is connected to $XS1$, and switch $SS4$
+is installed in the upper position, in which the power circuit of the $SPD$ is supplied  through
+transformer $T2$. 
+The average values of the voltage and current of SPD are measured with a $PVI$ voltmeter and a $PAI$ ammeter.
+The polarity of the input voltage is determined by the position of the switch $S3$. 
+Classification characteristics is observed with the switch $S2$ open. 
+In this case, to the SPD through the diodes $VD1$, $VD2$, $VDЗ$ is supplied
+half-wave voltage from the secondary winding of the transformer $T2$. 
+The $VD4$ diode sharply reduces the value
+negative half-wave voltage applied to the diode $VD3$ and SPD, which ensures the flow of current
+through SPD in only one direction. To observe the shape of the curves of the anode voltage and current input
+the oscilloscope is connected to terminals $X6-X5$ and $X6-X7$, respectively.
+
+To observe the static current-voltage characteristics of the SPD in the closed state, the $S2$ switch connects
+filter capacitor $C$, which provides power to the DC power circuit with a constant voltage.
+
+To turn on the power supplies of the power circuit of the SPD it is necessary:
+
+\begin{itemize}
+\item set switch $S4$ and plug connector $SP1$ to the desired position (upper or lower);
+\item set the autotransformer $T1$ to the lower position;
+\item turn on the switch $S1$ and the power supply of the control circuit;
+\item by pressing the $SB$ button, turn on the relay $K2$, 
+the contacts of which close the power supply circuit of the SPD.
+\end{itemize}
+
+The voltage relay $K3$ prevents the relay $K2$ from turning on when there is voltage at the output 
+of the autotransformer $T1$.
+The sensitive current relay $K1$ traps the relay K2 in case of a dangerous increase in the leakage current 
+of the SPD preventing it damage. When the connector $SP1$ is switched, 
+the power supply circuit of relay coil $K2$ opens, therefore
+After switching the connector, you must repeat its inclusion with the SB button.
+
+\begin{landscape}
+        \hspace{-3cm}
+        \vspace{1cm}
+\begin{figure}[ht!] 
+\include{schem1} 
+\caption{Laboratory arrangement}
+\label{labsetup}
+\end{figure}
+\end{landscape}
+
+
+\subsection{Task 1}
+
+Study of thyristor characteristics
+
+\begin{enumerate}
+\item Connect the test thyristor $VS1$ to terminals $X1-X4$.
+\item Observe and draw the static current-voltage characteristic of the thyristor control circuit 
+$I_{ctrl} = f(U_{ctrl})$.
+\item Determine the values of the control unlocking current $I_{ctrl.о}$ and the unlocking control voltage $U_{ctrl.o}$.
+\item Observe and draw a direct branch of the classification current-voltage characteristic of the thyristor 
+$I_a = f(U_a)$ in the open state.
+
+
+Sketch from the oscilloscope screen a direct branch of the dynamic current-voltage characteristic of the thyristor
+in the open state $I_a=f(U_a)$ and the curves of the anode current $I_a=f(\omega t)$ 
+and voltage $U_a = f(\omega t)$ at maximum anode current.
+
+\item Determine the pulse voltage in the open state, the value of the threshold voltage $U_0$
+and differential resistance $Rd$.
+
+\item observe and draw the direct and inverse branches of the classification 
+$I_{a.av} = f (U_{a\: max})$ and static $I_{a.st} = f (U_{a.st})$
+current-voltage characteristics of the thyristor in the closed state at the following current values
+control: $I_{ctrl} = 0$; $I_{ctrl} = 0.9 I_{ctrl\:o}$; $I_{ctrl} = 2.0 I_{ctrl\:o}$.
+
+In the classification scheme, draw from the oscilloscope screen
+a form of voltage curves $U_a = f(\omega t)$, forward and reverse leakage currents $I_a = f(\omega t)$
+at $I_{ctrl} = 0.9 I_{ctrl\:o}$ and the maximum possible values of the anode voltage.
+
+\item Determine the thyristor class and the values of the direct ($I_{direct\:\:leak}$) and 
+reverse ($I_{reverse\:\:leak}$) leakage currents.
+
+\item Determine the value of the holding current of the thyristor $I_{hold}$.
+\end{enumerate}
+
+\subsection{Methodological instructions to accoplish the task}
+
+\begin{enumerate}
+\item The static current-voltage characteristic of the control circuit of the SPD is observed on a direct current
+in the absence of the main (anode) voltage.
+
+\item The values of the unlocking current and unlocking voltage control are determined in the circuit
+of the SPD in the open state.
+
+For this, it is necessary to set the average value at zero value of the control current.
+the main (anode) voltage ($PV2$) 1.5 V and, gradually increasing the current and control voltage,
+fix their values at the moment of the appearance of the main (anode) current (according to $PA$2).
+
+\item Classification current-voltage characteristics of the power circuit of the SPD are observed at average values
+half-wave voltage and current according to the readings of $PV2$ and $PA2$ devices at a control current equal to
+1.2 $I_{ctrl\:\:o}$. Since the rated (classification) current of the tested SPD under natural cooling
+equal to 6 A, the observing characteristics from 6 to 10 A in order to avoid overheating of the semiconductor structure
+need to produce fast.
+
+\item The observation of the direct branch of the dynamic current-voltage characteristics of the SPD 
+in a state of high conductivity
+produced from the screen of the oscilloscope when a signal 
+is fed “vertically” to the input of the oscilloscope amplifier,
+proportional to the current of the SPD and to the amplifier 
+input "horizontally" - a signal proportional to the voltage
+on the thyristor. To do this, turn off the oscilloscope sweep generator, connect a common point
+amplifiers to terminal $X10$, and the inputs of amplifiers to terminals $X9$ and $X8$, respectively. 
+Since the amplitude
+sinusoidal half-wave current ($I_{a\:max}$) is in $\pi$ times more than its average value, 
+the greatest deviation of the current curve on the oscilloscope screen corresponds 
+to an instantaneous value equal to $I_{a\:\:max} = \pi I_{PA2}$,
+where $I_{PA2}$ is the current value measured by the $PA2$ ammeter. 
+The scale of the voltage curve is determined using external source. 
+The curves drawn from the screen onto the tracing paper must be transferred to the graphs 
+taking into account
+their corresponding quadrants and scales.
+
+Differential resistance and threshold voltage are determined by the dynamic current-voltage
+characterization of open-loop SPD by approximation by its broken line, consisting of
+a horizontal segment and an inclined beam crossing the characteristic at points $0.5 I_{m\:\: nom}$ and 
+$1.5 I_{m\:\: nom}$,
+where $I_{m\:\: nom} = 6\: A$ is the amplitude of the rated current STP.
+
+\item To avoid damaging of the device when taking the current-voltage characteristics in the closed state
+the applied voltage is increased smoothly, carefully fixing the increment of the leakage current and stopping
+further increase in voltage, as soon as at a certain value of $U_{zigzag}$
+a sharp increase in current begins.
+
+When plotting the classification characteristics of the SPD in the closed state, the average value
+voltage ($U_{a\:\:av}$), observed by the voltmeter $PV1$, is converted into the amplitude ($U_{a\:\: max}$)
+ and characteristics
+are constructed in the form of dependences $I_{a\:\:av} = f(U_{a\:\:max})$. 
+Since the voltage has a half-wave sinusoidal shape,
+conversion factor is $\pi$. Taking into account the same coefficient, 
+the scale of the curves is determined by the voltmeter $PV1$
+voltage $U_a = f (\omega t)$ observed when the oscilloscope is connected to terminals $X6-X5$. 
+The scale of the current curves is $i_a = f (\omega t)$,
+observed when connecting the oscilloscope to terminals $X6-X7$, is determined using the ammeter $PA1$ by the deviation
+beam in the circuit for taking static characteristics, i.e. when $S2$ is on. Curve taking $U_a = f (\omega t)$ and
+$I_a = f (\omega t)$ is produced at voltages close to $U_{zigzag}$.
+
+\item The rated voltage of the SPD is determined as follows:
+
+\begin{enumerate}
+\item according to the current-voltage characteristic in the low conductivity state taken at $I_{ctrl} = 0$, 
+the amplitude voltage values $\pm U_{zigzag}$;
+
+\item the smaller of the stresses / + Usag / and / -Usag / Multiplied by the safety factor, the numerical value of which
+usually around 0.75;
+
+\item the obtained voltage value is divided by 100, and the result is rounded down to the nearest
+integer, which is the class of a given valve, i.e., its rated voltage, expressed
+in hundreds of volts.
+\end{enumerate}
+
+If the class turns out to be less than the third, for a more complete use of devices, division into classes
+produced in 0.5.
+
+
+\item The holding current of the SPD is determined in the circuit designed for observing the direct 
+branch of the static volt-ampere
+characteristics in a state of low conductivity. For this, at zero anode voltage
+the control current is set equal to $1.5 I_{ctrl\:\:o}$; by adjusting the autotransformer $T1$, 
+the anode current is set
+at the maximum mark of the ammeter scale $PA1$, after which the control current decreases to zero and with a smooth
+reducing the anode current by adjusting $T1$, its value ($I_{ctrl\: d}$) is fixed at the moment 
+of switching off the SPD.
+\end{enumerate}
+
+\subsection{Report content}
+
+The report should include:
+\begin{enumerate}
+\item laboratory setup and its brief description;
+\item graphs and oscillograms specified in the task;
+\item the conclusions based on research results.
+\end{enumerate}
+\end{document}
