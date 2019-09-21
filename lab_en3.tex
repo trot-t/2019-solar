@@ -1,0 +1,245 @@
+\documentclass[a4paper,14pt]{article}
+\usepackage{lscape}
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+        \geometry{top=25mm}
+        \geometry{bottom=30mm}
+        \geometry{left=30mm}
+        \geometry{right=20mm}
+ %
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsmath}
+\usepackage{float}
+\usepackage[unicode, pdftex]{hyperref}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\usetikzlibrary{calc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amssymb,amsmath}
+\usepackage{float}
+\usepackage[unicode, pdftex]{hyperref}
+
+\usepackage[inline]{enumitem}
+%\usepackage{cleveref}
+%\crefname{subsectioni}{enumi}{examples}
+%\renewcommand{\labelenumi}{\thesubsection.\arabic{enumi}}
+%https://tex.stackexchange.com/questions/466153/cross-referencing-multiple-items
+
+\usepackage{tikz}
+\usepackage{rotating}
+%\usepackage[landscape]{geometry}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage{lipsum}
+\usepackage{nccmath}
+\usepackage{caption}
+\usepackage{siunitx}
+%\usepackage[american,cuteinductors,smartlabels]{circuitikz}
+%\usepackage[backend=biber]{biblatex}
+
+\usepackage[]{hyperref}
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+%\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{tripoles/thyristor/width=0.8}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+
+\ctikzset{resistor = european}
+\ctikzset{inductor = american}
+\ctikzset{tripoles/thyristor/height=0.55}
+
+\ctikzset{bipoles/cuteindictor/coils/.initial=3}
+\ctikzset{bipoles/americanindictor/coils/.initial=3}
+\ctikzset{bipoles/cuteindictor/coils/.initial=3}
+\ctikzset{bipoles/americanindictor/coils/.initial=3}
+\hypersetup{
+colorlinks=false,
+}
+\usepackage{textcomp}
+
+\begin{document}
+
+
+\section{Research of a 3-phase bridge thyristor converter}
+
+The aim of the work is to study the operation and characteristics of a 3-phase full-bridge thyristor converter and special circuits of converters with an increased power factor built on its basis.
+
+\subsection{4.1 Lab Description}
+
+Laboratory stand (Fig. 4.1) includes:
+
+\begin{itemize}
+\item controlled rectifier, made according to the 3-phase full-bridge circuit on the thyristors $VS1$-$VS6$;
+
+\item system of pulse-phase control of thyristors (SPPC);
+
+\item load circuits containing active resistances $R7$, $R9$, smoothing inductance $L$, an electric machine unit from two DC machines ($M1$, $G1$) with a tachogenerator ($BR$) and the power supply circuit of their field windings;
+
+\item relay-contactor, switching and measuring equipment.
+\end{itemize}
+
+The converter under study, the inclusion of which is carried out by the $Q1$ switch, is powered from a 380/220 V network through a 3-phase transformer $T$.
+
+The three-position switch $Q2$ allows you to connect in parallel to the thyristor full-bridge either two half-bridge uncontrolled valves (upper position $Q2$, diodes $VD1$, $VD2$), or one bypass uncontrolled valve (lower position $Q2$, diode $VD1$).
+
+To determine the parameters of the operating modes of the converter on the AC side, an ammeter $PA1$, a voltmeter $PV1$, and a power meter PW with a switch $S1$ are included, providing a change in the connection circuit of the voltage coil for measuring active and reactive powers. The voltage and current on the DC side of the converter are determined by the devices $PV2$ and $PA2$, respectively.
+
+The angle of regulation of the Converter for changing the rectified voltage is changed by adjusting the input voltage control SPPC potentiometer $R11$. To measure the input voltage, a $PV4$ voltmeter is used. Potentiometers $R15-R17$ of the input node of the SPPC (see Fig. 3.1), designed to adjust the initial, minimum and maximum values of the control angle, are placed on the front panel of the laboratory bench.
+The choice of the load nature of the converter is carried out by switch $S2$. The upper position $S2$ corresponds to the active load (resistor $R7$), and the lower one corresponds to the operation of the converter to the armature of the machine M1 with inductance $L$ connected in series.
+
+In the rectifier mode of operation of the converter, $M1$ is used as a motor, and $G1$ -- as a generator loaded on resistor $R9$. 
+In the inverter mode of the converter, $G1$ is used as a motor connected through a resistor $R8$ to a 110~V~DC source, and $M1$ acts as a generator, loaded on the DC circuit of the converter. 
+The frequency of rotation of electric machines is controlled by a voltmeter $PV3$, which measures the voltage of the tachogenerator $BR$.
+
+The selection of the rectifier or inverter mode is carried out, respectively, by the $SB2$ and $SB3$ buttons. Regulation of the load current value in these modes is carried out by potentiometer $R10$, which provides a change in the excitation current of the machine M1 (in the rectifier mode of the converter) or $G1$ (in the inverter mode). An additional means of regulating the load current of the converter in the rectifier mode is the resistor $R9$, and in the inverter mode - the resistor $R8$.
+
+The $K4.2$ contact block of the $K4$ relay, whose coil ($K4.1$) is connected to the thyristor bridge output, does not allow the contactors $K2$ and $K3$ to turn on at a non-zero value of the rectified voltage, thereby preventing the inrush current of the armature $M1$ when the contacts $K2.2$ or $K3.2$ are turned on. 
+Similarly, the $K5.2$ contact block of relay $K5$, the coil of which is connected to the output of potentiometer $R10$, does not allow the contactor K3 to turn on at a non-zero value of the excitation voltage M1, preventing current surges when the armature circuit $M1$ is closed by contact $K3.2$ in the inverter mode of the converter.
+
+On the front panel of the laboratory bench, terminals $X1-X2$ and $X7-X8$ are installed, which allow you to observe, using an electronic oscilloscope, the curves of the output voltage of the converter and control pulses at the output of one of the SPPC channels.
+
+\begin{landscape}
+        \hspace{-3cm}
+        \vspace{1cm}
+\begin{figure}[ht!]
+\include{schem3}
+\caption{Laboratory arrangement}
+\label{labsetup2}
+\end{figure}
+\end{landscape}
+
+
+\subsection{4.2. Task 1}\label{taskI}
+
+\begin{enumerate}
+\item Using the adjustment potentiometers $R15-R17$ of the input SPPC node, set the following values of the minimum, initial and maximum control angles: $\alpha_{min} = 0^\circ, \alpha_{initial} = 90,^\circ \alpha_{max} 145^\circ$.
+
+
+\item\label{taskI_second} To observe and draw graph of the control characteristic of SPPC
+$\alpha = f(U_c)$.
+
+\item\label{taskI_third} When the converter is operating for constant active resistance $R7$, observe and draw graph of the control characteristic $U_d = f (\alpha)$. For the four values of a (15, 45, 75 and $105^\circ$), draw the rectified voltage curves 
+	$U_d = f (\omega t)$ from the oscilloscope screen.
+
+\item When working on an anchor of a DC machine with a constant current value $I_d = 0.3$A, 
+observe and draw graph of  the control characteristic $U_d = f (\alpha)$ for the rectifier and inverter modes of the converter.
+For values of a (15, 45, 75, 105, and $120^\circ$), 
+draw the rectified voltage curves $U_d = f(\omega t)$ from the oscilloscope screen.
+
+\item To observe and draw graph of a family of external characteristics of the converter $U_d = f(I_d)$ with control angles a equal to 15, 75, 105 and $120^\circ$.
+
+\end{enumerate}
+
+\subsection{4.3. Task 2}
+
+\begin{enumerate}
+	\item\label{taskIIfirst} When working on the anchor of a DC machine, observe and draw graph of
+adjusting characteristics $U_d = f(\alpha)$ at a constant value of the rectified current $Id = 0.3$ A of 3-phase 
+full-bridge thyristor rectifiers with two zero and one shunt diodes.
+Draw from the oscilloscope screen the curves of the instantaneous value of the rectified voltage of the rectifiers at angles of 15, 45, 75, 105 and $120^\circ$.
+
+\item For a 3-phase full-bridge thyristor converter (in rectifier and inverter modes) and for special converter circuits with two zero and one shunt diodes (in rectifier mode) when working on an anchor of a DC machine with a constant value of the rectified current $I_d = 1$ A observe and draw graph of energy characteristics: 
+	efficiency $\eta$), reactive power ($Q$) and power factor ($\lambda$) from the rectified voltage.
+\end{enumerate} 
+
+\subsection{4.4. Methodological instructions for the performance of work}
+
+\begin{enumerate}
+	\item\label{taskII_first} The $\alpha_{min}, \alpha_{initial}, \alpha_{max}$ values should be set using an oscilloscope 
+along the curve $U_d = f(\omega t)$ during operation of the converter for active load 
+		with zero diodes turned on (upper position $Q2$).
+Adjust the sweep of the oscilloscope in such a way that the entire range of the angle of adjustment fits on the screen.
+The angle a should be counted from its zero value by the sinusoid of one of the converter phases.
+
+\item The adjustment characteristics of the SPPC (see \ref{taskI}.\ref{taskI_second}) and the converter 
+	during its operation at the active resistance (see \ref{taskI}.\ref{taskI_third}) 
+		should be taken simultaneously using an oscilloscope (as indicated in \ref{taskII_first}) 
+	and voltmeters $PV2$ and $PV4$.
+
+\item Oscillograms of the curves of the instantaneous value of the rectified voltage should be plotted on a scale at a time interval equal to one period of the supply network.
+
+\item The graphs of the adjusting characteristics of the converter $U_d = f (\alpha)$ when operating 
+under active load (see 4.2, p. 3) and at the anchor of a DC machine (see 4.2, p. 1; 4.3, p. 1) 
+		should be depicted on one picture.
+
+\item When taking the energy characteristics (see 4.3, p. 2), 
+all measuring devices are used that are installed on the alternating ($PA1$, $PV1$, $PW$) 
+		side and on the constant ($PA2$, $PV2$) side of the converter currents.
+
+The efficiency values are determined based on the readings of $PW$, $PA2$ and $PV2$ in accordance with the ratios:
+
+\begin{itemize}
+	\item in rectifier mode ($U_d> 0$):
+$$
+		\eta = \frac{U_dI_d}{P}
+$$
+	\item in inverter mode ($U_d <0$):
+$$
+		\eta = \frac{P}{U_dI_d}
+$$
+
+\end{itemize}
+where $P$ is the active power on the AC side of the converter, determined by the readings of PW.
+
+It should be noted that $PW$ measures the power of one phase at the input of the thyristor bridge, 
+so the total value of $P$ is equal to the triple value of the power measured by $PW$.
+In addition, the power measured by $PW$ in the rectifier and inverter modes of the converter 
+has the opposite direction, therefore, the substitution of the values of $P$ and Ud in expressions (4.1), (4.2) 
+	should be made taking into account their signs.
+
+When measuring the reactive power of the coil of the wattmeter voltage, the $PW$ is switched on to a linear voltage, 
+so its readings correspond to the reactive power of one phase increased by 3 times, and to obtain the full value of the reactive power $Q$ these readings should be multiplied by 3: $Q = 3 Q_{PW}$.
+
+To determine the power factor, the readings of the $PW$, $PA1$ and $PV1$ devices are used:
+
+$$
+		\lambda =\frac{\sqrt{3}P_{PW}}{I_{PA1}U_{PV1}}
+$$
+
+Graphs of all energy characteristics are plotted in relative units in the form of dependencies:
+
+$$
+		\eta = f(\overline{U_d}; \overline{q}) = f(\overline{U_d}); \lambda = f(\overline{U_d})
+$$
+
+where ${\displaystyle Ud = \frac{U_d}{E_{d0}}}$ is the relative value of the rectified voltage, 
+${\displaystyle q = \frac{Q}{E_{d0}I_d}}$ is the relative value of reactive power; $E_{d0}$
+is the maximum value of the rectified EMF of the converter. 
+The value of $E_{d0}$ is determined based on the readings of $PV1$ from the ratio
+
+$$
+E_{d0} = \frac{3\sqrt{2}}{\pi} U_{PV1}
+$$
+
+
+The graphs of each of the energy characteristics (4.3) for all three converter circuits are plotted in the same figure with the same scale on both axes.
+\end{enumerate}
+
+
+\subsection{4.5. Report content}
+
+The report should include:
+\begin{enumerate}
+\item laboratory setup diagram with a brief description thereof;
+
+\item tables, graphs specified in the task characteristics of the investigated
+transducer and waveforms;
+
+\item brief conclusions on the results of research.
+\end{enumerate}
+
+\end{document}
