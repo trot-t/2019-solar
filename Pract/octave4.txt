@@ -1,0 +1,12 @@
+function xdot = f (x,t)
+l=0.04;
+c=0.0000002777;
+r=1200;
+u=24;
+xdot(1) = 1/(r*c)*x(2);
+xdot(2) = -r/l*x(1) - 1/(r*c)*x(2) + u/l;
+endfunction
+x = lsode("f", [0.0,0.0], (t = linspace(0,0.004,200000)'));
+set term dumb;
+plot(t,x);
+

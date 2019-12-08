@@ -1,0 +1,415 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{extsizes}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{tikz}
+\usepackage[european,cuteinductors,smartlabels]{circuitikz}
+
+\usepackage{amsmath,amsfonts}
+\usepackage{amssymb}
+\usepackage[scr]{rsfso}
+
+
+
+%%% Межстрочный интервал
+\usepackage{setspace}
+
+%% таблицы
+\usepackage{booktabs}
+
+%% для кода
+\usepackage{color}
+\usepackage{listingsutf8}
+
+\input{colors}
+
+\lstset{%
+  language=C++,%
+  morekeywords={constexpr,nullptr,size_t,uint32_t,assert,override,final},%
+  basicstyle=\ttfamily\footnotesize,%
+  sensitive=true,%
+  keywordstyle=\color{blue},%
+  stringstyle=\color{darkgreen},%
+  commentstyle=\color{violet},%
+  showstringspaces=false,%
+  tabsize=2,%
+  frame=leftline,
+  rulecolor=\color{lightblue},
+  xleftmargin=10pt,
+}
+
+\lstset{
+%extendedchars=\true,
+%inputencoding=utf8x,   
+  numberstyle=\tiny,
+  numbers=left,
+  numbersep=10pt,
+  xleftmargin=10pt,
+  %framesep=4.5mm,
+  %framexleftmargin=2.5mm,
+  framexleftmargin=5pt,
+  framesep=15pt,
+  fillcolor=\color{lightgrey},
+}
+
+
+\title{Повышающий преобразователь}
+\author{}
+% Конец преамбулы
+\begin{document}
+%\maketitle
+%\begin{tikzpicture}
+%\newcommand{\xb}{-3}
+%\newcommand{\xa}{3}
+%\draw[thin, ->] (-6,0) -- (6,0) node[right] {$X$};
+%\draw[thin, ->] (0,-6) -- (0,6) node[left] {$Y$};
+%\foreach \x\xtext in {-5/-5,5/5,{\xb}/\xb,{\xa}/{\displaystyle \frac{-b+\sqrt{b^2-4ac}}{2a}}} % 
+%   \draw (\x,0.1) -- (\x,-0.1) node[below] {$\xtext$};
+
+ %\draw[domain=-5:5, help lines, smooth]
+ %       plot ({\x},{0.2*(\x-\xa)*(\x-\xb)});
+%\end{tikzpicture}
+
+
+%\section{}
+
+\begin{tikzpicture}
+	\draw(0,3) to[L,l=L,o-] (3,3) -- (4,3) to [C,l_=C] (4,0) to[short,-o] (0,0);
+	\draw(4,3) to[short,*-] (6.5,3) to[R,l_=R] (6.5,0) to [short,-*] (4,0);
+	\draw[->,>=latex] (7.2,2.1) -- (7.2,0.9) node[midway,right] {$i_1$};
+	\draw[->,>=latex] (4.7,2.1) -- (4.7,0.9) node[midway,right] {$i_2$};
+	\draw (0,1.5) node {$U_1$};
+\end{tikzpicture}
+
+At t=0 we have $i_1(0) = i_{10}$ and $i_2(0) = i_{20}$.
+$$
+U=const
+$$
+Lets get graphs for $i_1(t), i_2(t)$ from analitic solution of differencial equations for the circuit.
+
+\begin{equation}
+\left\{
+\begin{array}{lll}
+U_1 = L\frac{\partial i}{\partial t} + R i_1 & \Rightarrow & 0 = \frac{\partial^2 i}{\partial t^2} + R \frac{\partial i_1}{\partial t} \\
+	U_1 = L\frac{\partial i}{\partial t} + \frac{1}{C}\int\limits_0^t i_2(\tau) d\tau & \Rightarrow & 0 = \frac{\partial^2 i}{\partial t^2} + \frac{1}{C} i_2
+\end{array}
+\right.
+\label{initial}
+\end{equation}
+
+Из первого и второго уравнения системы (\ref{initial}) получаем:
+
+\begin{equation}
+R\frac{\partial i_1}{\partial t} = \frac{1}{C} i_2 \Rightarrow \frac{\partial i_1}{\partial t} = \frac{1}{RC} i_2 
+\label{first}
+\end{equation}
+
+из первого уравнения системы (\ref{initial}):
+
+$$
+\frac{\partial i_1}{\partial t} + \frac{\partial i_2}{\partial t} = -\frac{R}{L} i_1 + \frac{U_1}{L} 
+$$
+
+%Сведем систему 2-х уравнений первого порядка к одному уравнению второго порядка (исключаем $i_2$):
+
+%$$
+%\frac{\partial i_1}{\partial t} + RC\frac{\partial^2 i_1}{\partial t^2} = -\frac{R}{L} i_1 + \frac{U_1}{L}
+%$$
+
+%Решение есть сумма общего решения однородного уравнения
+%$$
+%RC\frac{\partial^2 i_1}{\partial t^2} +  \frac{\partial i_1}{\partial t}  + \frac{R}{L} i_1 = 0
+%$$
+%и частного решения неоднородного (с ненулевой правой частью).
+
+
+
+
+
+
+
+В этом уравнении заменим $\frac{\partial i_1}{\partial t}$ из (\ref{first}):
+
+$$
+\frac{\partial i_2}{\partial t} = - \frac{R}{L} i_1 - \frac{1}{RC} i_2 + \frac{U_1}{L}
+$$
+
+\begin{equation}
+\frac{\partial}{\partial t}\!\left(\begin{array}{c}i_1\\[1.5mm]i_2\end{array}\right) =
+	\left(\begin{array}{cc}0&\frac{1}{RC}\\[1.5mm] -\frac{R}{L}&-\frac{1}{RC}\end{array}\right)
+		\left(\begin{array}{c}i_1\\[1.5mm]i_2\end{array}\right)
+		+
+	\left(\begin{array}{c}0\\[1.5mm]\frac{U_1}{L}\end{array}\right)
+\end{equation}
+
+Предполагая решение в виде $i(t) = e^{\lambda t}$ получаем характеристическое уравнение.
+
+$$
+\left(\begin{array}{cc}-\lambda & \frac{1}{RC}\\[1.5mm] -\frac{R}{L} & -\lambda -\frac{1}{RC}\end{array}\right) =0  \Rightarrow \lambda^2 + \lambda \frac{1}{RC} + \frac{1}{LC} =0
+$$
+
+$$
+D = b^2 - 4ac = \frac{1}{(RC)^2} - \frac{4}{LC}
+$$
+
+$$
+\lambda_{1,2} = \frac{-b \pm \sqrt{D}}{2a} = -\frac{1}{2RC} \pm \sqrt{\frac{1}{(2RC)^2}- \frac{1}{LC}}
+= -\alpha \pm j\omega
+$$
+
+$$
+i_1(t) = A\cdot e^{\lambda_1 t} + B\cdot e^{\lambda_2 t} + \frac{U_1}{R}
+$$
+$$
+i_2(t) = A\cdot \lambda_1e^{\lambda_1 t} + B\cdot \lambda_2e^{\lambda_2 t}
+$$
+
+
+
+При $t=0$ получаем:
+
+$$
+A + B + \frac{U_1}{R} = i_{10}
+$$
+$$
+\lambda_1 \cdot A + \lambda_2 \cdot B = i_{20}
+$$
+
+
+
+Для определения коэффициентов получаем матрицу
+$$
+\left(
+\begin{array}{cc}
+  1 & 1 \\[1.5mm] 
+  \lambda_1 & \lambda_2 
+\end{array}
+\right)\left(
+\begin{array}{c}
+  A\\[1.5mm]
+  B 
+\end{array}  
+\right)=\left(
+\begin{array}{c}
+	i_1(0) - \frac{U_1}{R}\\[1.5mm]
+  i_2(0) 
+\end{array}
+\right)
+$$
+решая в Reduce-algebra
+\lstinputlisting[linerange={1-3}]{AB.red}
+$$
+\begin{array}{ccl}
+	A&=&-\frac{i_1(0)\lambda_2}{\lambda_1-\lambda_2} + \frac{i_2(0)}{\lambda_1-\lambda_2} + \frac{\lambda_2}{\lambda_1-\lambda_2}\frac{U}{R}\\[1.5mm]
+	B&=&\frac{i_1(0)\lambda_1}{\lambda_1-\lambda_2} - \frac{i_2(0)}{\lambda_1-\lambda_2} - \frac{\lambda_1}{\lambda_1-\lambda_2}\frac{U}{R}
+\end{array}
+$$
+
+упростим 
+$$
+\lambda_1 - \lambda_2 = \sqrt{\frac{1}{(RC)^2} - \frac{4}{LC}} = j \sqrt{\frac{4}{LC} - \frac{1}{(RC)^2}} = 2j\cdot \mathcal{I}m = 2j\omega
+$$
+
+
+
+
+еще два упрощения:
+$$
+\frac{\lambda_2e^{\lambda_1t} - \lambda_1e^{\lambda_2t}}{\lambda_1-\lambda_2} = -e^{-\alpha t}
+\left(\cos(\omega t) + \frac{\alpha}{\omega} \sin(\omega t)\right)
+$$
+
+$$
+\frac{e^{\lambda_1t} - e^{\lambda_2t}}{\lambda_1-\lambda_2} = e^{-\alpha t}
+\frac{\sin\omega t}{\omega}
+$$
+
+
+$$
+i_1(t) = \frac{i_1(0) - \frac{U}{R}}{\lambda_1-\lambda_2} \left( -\lambda_2e^{\lambda_1 \cdot t}  + \lambda_1e^{\lambda_2 \cdot t} \right)
++\frac{i_2(0)}{\lambda_1 - \lambda_2} \left(e^{\lambda_1\cdot t} - e^{\lambda_2\cdot t}\right)  + \frac{U}{R}=
+$$
+
+$$
+= e^{-\alpha t} \left[ \left(i_1(0) - \frac{U}{R}\right)
+\left(\cos(\omega t) + \frac{\alpha}{\omega} \sin(\omega t)\right)
++ i_2(0) \frac{\sin(\omega t)}{\omega} \right]  + \frac{U}{R} =
+$$
+
+$$
+= \frac{e^{-\alpha t}}{\omega} \left[ \left(i_1(0) - \frac{U}{R}\right)
+\left(\omega\cos(\omega t) + \alpha \sin(\omega t)\right)
++ i_2(0) \sin(\omega t) \right]  + \frac{U}{R}
+$$
+
+
+$$
+i_2(t) = RC\left\{-\alpha e^{-\alpha t} \left[ \left(i_1(0) - \frac{U}{R}\right)
+\left(\cos(\omega t) + \frac{\alpha}{\omega} \sin(\omega t)\right)
++ i_2(0) \frac{\sin(\omega t)}{\omega} \right]\right. +
+$$
+$$
++ \left.e^{-\alpha t} \left[  \left(i_1(0) - \frac{U}{R}\right) 
+\left(-\omega\sin(\omega t) + \alpha \cos(\omega t)\right) + i_2(0)\cos(\omega t)
+\right]\right\} =
+$$
+
+$$
+=  e^{-\alpha t} \frac{1}{2\alpha} \left[ \left(i_1(0) - \frac{U}{R}\right)
+\left(-\omega - \frac{\alpha^2}{\omega}\right)\sin(\omega t) + 
+i_2(0)\left(\cos(\omega t) - \frac{\alpha}{\omega}\sin(\omega t)\right)
+\right] 
+$$
+
+здесь заметим, что 
+$$
+\alpha^2 + \omega^2 = \frac{1}{(2RC)^2} + \frac{1}{LC} - \frac{1}{(2RC)^2} = \frac{1}{LC}; \;\;\; 
+\frac{1}{2\alpha} = RC; \;\;\;\; \frac{\alpha^2+\omega^2}{2a} = \frac{R}{L}
+$$
+
+
+$$
+i_2(t)=\frac{e^{-\alpha t}}{\omega}
+\left[ -\left(i_1(0) - \frac{U}{R}\right)\frac{R}{L}\sin(\omega t) 
++ i_2(0) \frac{1}{2\alpha} \left(\omega \cos(\omega t) - \alpha\sin(\omega t)\right)
+\right] =
+$$
+
+$$
+\frac{e^{-\alpha t}}{\omega}
+\left[ -\left(i_1(0) - \frac{U}{R}\right)\frac{R}{L}\sin(\omega t)
++ i_2(0) RC \left(\omega \cos(\omega t) - \alpha\sin(\omega t)\right)
+\right]
+$$
+
+Введем новую переменную ${\displaystyle 
+	\tilde{i}_1(t) = i_1(t) - \frac{U}{R}}$, 
+
+тогда:
+$$
+\tilde{i}_1(t) = \frac{e^{-\alpha t}}{\omega} \left[ \tilde{i}_1(0) 
+\left(\omega\cos(\omega t) + \alpha \sin(\omega t)\right)
++ i_2(0) \sin(\omega t) \right]
+$$
+$$
+i_2(t)=\frac{e^{-\alpha t}}{\omega}
+\left[ -\tilde{i}_1(0) \frac{\alpha^2+\omega^2}{2\alpha}\sin(\omega t) +
+i_2(0) \frac{1}{2\alpha} \left(\omega \cos(\omega t) - \alpha\sin(\omega t)\right)
+\right]
+$$
+
+$$
+i(t) = \frac{e^{-\alpha t}}{\omega} 
+\left[
+\tilde{i}_1(0)\left(\omega\cos(\omega t) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega t) \right)
++ i_2(0)\left(\omega\cos(\omega t)  + \alpha\sin(\omega t)\right)
+\right]
+$$
+
+% mathcal{Re}
+
+%[  - i_10*l*lambda_2 + i_20*l + lambda_2*u ]
+%[------------------------------------------]
+%[         l*(lambda_1 - lambda_2)          ]
+%[                                          ]
+%[  i_10*l*lambda_1 - i_20*l - lambda_1*u   ]
+%[ ---------------------------------------  ]
+%[         l*(lambda_1 - lambda_2)          ]
+
+Построить графики аналитического решения для токов $i_1(t)$, $i_2(t)$ и $i(t)$ с помощью программы {\bf gnuplot}. Пример построения в программе {\bf gnuplot}
+представлен ниже:
+
+\lstinputlisting{gnuplot.cmd}
+
+Получить численное решение дифференциальных уравнений с помощью программы {\bf octave}. Пример численного решения в программе {\bf octave} представлен ниже:
+
+\lstinputlisting{octave4.txt}
+
+Смоделировать решение дифференциальных уравнений с помощью программы {\bf ngspice}. Пример моделирования решения с помощью {\bf ngspice} представлен ниже:
+
+\lstinputlisting{check.cir}
+
+Сравнить решения.
+
+\begin{tikzpicture}
+\draw(0,2) to [L,o-] (2,2) -- (2,0) to[short,-o] (0,0);
+\draw ({4+0},0) to[C] ({4+0},2) -- ({4+2},2) to[R] ({4+2},0) -- ({4+0},0); 
+\end{tikzpicture}
+
+уравнение цепи на интервале $(n+\gamma)T \ge t \ge (n+1)T$
+
+$$
+RC \frac{d U_C}{dt} + U_C = 0
+$$
+Введем новую переменную -- относительное время
+$$
+\bar{t} = \frac{t}{T}
+$$
+Введем новую переменную $\beta^{\prime\prime} = \frac{T}{RC}$
+
+тогда для уравнения
+$$
+\frac{1}{\beta^{\prime\prime}}\frac{dU_C}{dt} + U_C = 0
+$$
+
+получаем решение
+$$
+U_C(t) = B_c e^{-\beta^{\prime\prime}(\bar{t}-n-\gamma)}
+$$
+аналогично для тока через резистор
+$$
+i_1(t) = i_2(n+\gamma) e^{-\beta^{\prime\prime}(\bar{t}-n-\gamma)}
+$$
+
+
+для цепи с индуктивностью 
+$$
+U = L\frac{d i_L}{dt} 
+$$
+решение уравнения:
+$$
+i(t) = i(n+\gamma) + L\cdot t
+$$
+
+
+\subsection{Laplace way}
+
+$$
+\left\{
+\begin{array}{lcl}
+%	px - \frac{1}{RC} = 
+	Li_1^\prime + L i_2^\prime + Rx &=& U\\[1.5mm]
+	Li_1^\prime + L i_2^\prime + \frac{1}{C}\int i_2 d\tau &=& U
+\end{array}
+\right.
+$$
+
+$$
+\left\{
+\begin{array}{lcl}
+	i_1^\prime &=& \frac{1}{RC} i_2\\[1.5mm]
+	i_2^\prime &=& \frac{U}{L} - \frac{R}{L} i_1 - \frac{1}{RC} i_2
+\end{array}
+\right.
+$$
+
+Делаем замену
+$$
+\frac{U}{L} \doteqdot \frac{U}{L} \cdot \frac{1}{p};\; \; \; i_1 \doteqdot \tilde{I}_1 ;\; \; \; i_2 \doteqdot \tilde{I}_2; \; \; \;
+i_1^\prime = \tilde{I}_1\cdot p - i_1(0); \; \; \;  i_2^\prime = p \tilde{I}_2 - i_2(0)
+$$
+
+$$
+%\left\{
+%	\begin{array}{lcl}
+%		p\cdot \tilde{I}_1 - i_1(0) &=& \frac{1}{RC} \cdot \tilde{I}_2\\[1.5mm]
+%		p\cdot \tilde{I}_2 - i_2(0) &=& \frac{U}{L}\cdot \frac{1}{p} - \frac{R}{L}\cdot \tilde{I}_1 -  \frac{1}{RC} \cdot \tilde{I}_2
+%	\end{array}
+%\right.
+$$
+
+\subsection{Дискретное преобразование Лапласа}
+
+\end{document}

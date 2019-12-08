@@ -1,0 +1,11 @@
+check
+*
+V1 1 0 24
+L1 1 2 0.04 ic=0
+C1 2 0 0.2777u ic=0
+R1 2 0 1200
+.control
+tran 0.000000001 0.004 uic
+.endc
+.end
+
