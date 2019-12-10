@@ -284,8 +284,8 @@ $$
 \right]
 $$
 
-Введем новую переменную ${\displaystyle 
-	\tilde{i}_1(t) = i_1(t) - \frac{U}{R}}$, 
+Введем новые переменные ${\displaystyle \tilde{i}_1(t) = i_1(t) - \frac{U}{R}}$,
+${\displaystyle \tilde{i}(t) = i(t) - \frac{U}{R}}$
 
 тогда:
 $$
@@ -301,7 +301,7 @@ i_2(0) \frac{1}{2\alpha} \left(\omega \cos(\omega t) - \alpha\sin(\omega t)\righ
 $$
 
 $$
-i(t) = \frac{e^{-\alpha t}}{\omega} 
+\tilde{i}(t) = \frac{e^{-\alpha t}}{\omega} 
 \left[
 \tilde{i}_1(0)\left(\omega\cos(\omega t) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega t) \right)
 + i_2(0)\left(\omega\cos(\omega t)  + \alpha\sin(\omega t)\right)
@@ -338,7 +338,7 @@ $$
 \draw ({4+0},0) to[C] ({4+0},2) -- ({4+2},2) to[R] ({4+2},0) -- ({4+0},0); 
 \end{tikzpicture}
 
-уравнение цепи на интервале $(n+\gamma)T \ge t \ge (n+1)T$
+уравнение цепи на интервале $(n+\gamma)T \le t \le (n+1)T$
 
 $$
 RC \frac{d U_C}{dt} + U_C = 0
@@ -360,7 +360,7 @@ U_C(t) = B_c e^{-\beta^{\prime\prime}(\bar{t}-n-\gamma)}
 $$
 аналогично для тока через резистор
 $$
-i_1(t) = i_2(n+\gamma) e^{-\beta^{\prime\prime}(\bar{t}-n-\gamma)}
+i_1(t) = i_1(n+\gamma) e^{-\beta^{\prime\prime}(\bar{t}-n-\gamma)}
 $$
 
 
@@ -412,4 +412,145 @@ $$
 
 \subsection{Дискретное преобразование Лапласа}
 
+$$
+i_1(n+1) = U_c(n+1)/R
+$$
+$$
+i_2(n+1) = i(n+1) - i_1(n+1)
+$$
+
+$$
+U_c(n+1) = U_c(n+\gamma) e^{-\beta^\prime (\bar{t} - n - \gamma)} 
+$$
+$$
+i_1(n+1) = i_1(n+\gamma) e^{-\beta (1-\gamma)}
+$$
+$$
+i(n+1) = i(n+\gamma) + L\cdot (1-\gamma)
+$$
+
+$$
+U_c(n+\gamma) = R\cdot i_1(n+\gamma)
+$$
+%$$
+%i_2(n+\gamma) = \frac{e^{-\alpha\gamma T}}{\omega}
+%\left[ -\tilde{i}_1(n) \frac{\alpha^2+\omega^2}{2\alpha}\sin(\omega\gamma T) +
+%i_2(n) \frac{1}{2\alpha} \left(\omega \cos(\omega\gamma T) - \alpha\sin(\omega\gamma T)\right)
+%\right] 
+%$$
+$$
+\tilde{i}(n+\gamma) = \frac{e^{-\alpha\gamma T}}{\omega} 
+\left[
+\tilde{i}_1(n)\left(\omega\cos(\omega\gamma T) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega\gamma T) \right)
++ i_2(n)\left(\omega\cos(\omega\gamma T)  + \alpha\sin(\omega\gamma T)\right)
+\right]
+$$
+
+
+Выразим $n+1$ через $n$:
+$$
+\tilde{i}[n+1] = L\cdot (1-\gamma) +
+$$
+$$
++ \frac{e^{-\alpha\gamma T}}{\omega}
+\left[
+\tilde{i}_1[n] \left(\omega\cos(\omega\gamma T) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega\gamma T) \right)
++ i_2[n]\left(\omega\cos(\omega\gamma T)  + \alpha\sin(\omega\gamma T)\right)
+\right] =
+$$ 
+$$
+= L\cdot (1-\gamma) + \frac{e^{-\alpha\gamma T}}{\omega}
+\left[
+\tilde{i}_1[n]\left(\omega\cos(\omega\gamma T) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega\gamma T) \right) \right. +
+$$
+$$
+\left.
++ \left(\tilde{i}[n] - \tilde{i}_1[n]\right)\left(\omega\cos(\omega\gamma T)
++ \alpha\sin(\omega\gamma T)\right)
+\right]
+$$
+%$$
+%i_2(n+1) = i(n+1) - i_1(n+1) = i(n+1) - i_1(n+\gamma) e^{-\beta (1-\gamma)} =
+%$$
+%$$
+%=i(n+1) - \left\{ \frac{e^{-\alpha t}}{\omega} \left[ \tilde{i}_1(0) 
+%\left(\omega\cos(\omega t) + \alpha \sin(\omega t)\right)
+%+ i_2(0) \sin(\omega t) \right] + \frac{U}{R} \right\}  e^{-\beta (1-\gamma)}
+%$$
+$$
+\tilde{i}_1[n+1] +\frac{U}{R} = \left(\frac{e^{-\alpha\gamma T}}{\omega} 
+\left[ \tilde{i}_1[n] 
+\left(\omega\cos(\omega\gamma T) + \alpha \sin(\omega\gamma T)\right)
++ i_2[n] \sin(\omega\gamma T) \right] + \frac{U}{R}\right) e^{-\beta (1-\gamma)} =
+$$ 
+$$
+= \frac{e^{-\alpha\gamma T -\beta(1-\gamma)}}{\omega} \left( \tilde{i}_1[n] 
+\left(\omega\cos(\omega\gamma T) + \alpha \sin(\omega\gamma T)\right)
++ \left(\tilde{i}[n] - \tilde{i}_1[n]\right)\sin(\omega\gamma T) \right)
++ \frac{U}{R} e^{-\beta (1-\gamma)}
+$$
+
+На основании теоремы сдвига:
+$$
+\left.
+\begin{array}{lcl}
+D\left\{i[n+1]\right\} &=& e^q I^*(q) - e^q i[0]\\[1.5mm]
+D\left\{i_1[n+1]\right\} &=& e^q I_1^*(q) - e^q i_1[0]
+\end{array}
+\right\}
+$$
+
+$$
+e^q I^*(q) - e^qi[0] - L\cdot(1-\gamma)\frac{e^q}{e^q - 1} = 
+$$
+$$
+= \frac{e^{-\alpha\gamma T}}{\omega} \left[
+-\tilde{I}_1^*(q) \frac{\alpha^2+\omega^2}{2\alpha} sin(\omega\gamma T) 
++ I^*(q) \left(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)\right)
+\right]
+$$
+
+$$
+e^q\tilde{I}^*_1(q) - e^q i_1[0] + 
+\frac{U}{R}\left(1- e^{-\beta(1-\gamma)} \right) \frac{e^q}{e^q-1} =
+$$
+$$
+= \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega} \left(
+\tilde{I}_1^*(q) \left(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)\right)
++ \left(I^*(q) - \tilde{I}^*_1(q) \right)\sin(\omega\gamma T)
+\right)
+$$
+
+получаем систему уравнений относительно $I(q)$ и $\tilde{I}_1(q)$:
+
+$$
+\hspace{-2cm}
+\left(
+\begin{array}{cc}
+{\displaystyle \frac{e^{-\alpha\gamma T}}{\omega}(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)) - e^q} 
+&
+{\displaystyle -\frac{e^{-\alpha\gamma T}}{\omega}\frac{\alpha^2+\omega^2}{2\alpha}\sin(\omega\gamma T)}\\
+{\displaystyle \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega}\sin(\omega\gamma T)}
+&
+{\displaystyle \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega}
+	\left( \omega\cos(\omega\gamma T) + (\alpha -1)\sin(\omega\gamma T)\right)} - e^q
+\end{array}
+\right)\times
+$$
+$$
+\times\left(
+\begin{array}{c}
+I^*(q)\\
+\tilde{I}_1^*(q)
+\end{array}
+\right)=
+\left(
+\begin{array}{c}
+{\displaystyle - e^qi[0] - L\cdot(1-\gamma)
+	\frac{e^q}{e^q - 1}} \\[2.2mm]
+{\displaystyle - e^q i_1[0] +
+\frac{U}{R}\left(1- e^{-\beta(1-\gamma)} \right) \frac{e^q}{e^q-1}}
+\end{array}
+\right)
+$$
 \end{document}
