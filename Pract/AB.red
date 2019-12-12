@@ -23,6 +23,8 @@ operator check;
 let check(t) = (lambda_2*e^(lambda_1*t)-lambda_1*e^(lambda_2*t))/(lambda_1-lambda_2) + 
 e^(-alpha*t)*(cos(w*t)+alpha/w*sin(w*t));
 
+let check1(t) = (e^(lambda_1*t)-e^(lambda_2*t))/(lambda_1-lambda_2);
+
 let cos(w*t) + i*sin(w*t) = e^(i*w*t);
 
 check(t);
