@@ -303,7 +303,7 @@ $$
 $$
 \tilde{i}(t) = \frac{e^{-\alpha t}}{\omega} 
 \left[
-	\tilde{i}_1(0)\left(\omega\cos(\omega t) + \frac{(\alpha - \omega)^2}{2\alpha}\sin(\omega t) \right)
+	\tilde{i}_1(0)\left(\omega\cos(\omega t) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega t) \right)
 + i_2(0)\frac{1}{2\alpha}\left(\omega\cos(\omega t)  + \alpha\sin(\omega t)\right)
 \right]
 $$
@@ -441,7 +441,7 @@ $$
 $$
 \tilde{i}(n+\gamma) = \frac{e^{-\alpha\gamma T}}{\omega} 
 \left[
-\tilde{i}_1(n)\left(\omega\cos(\omega\gamma T) + \frac{(\alpha - \omega)^2}{2\alpha}\sin(\omega\gamma T) \right)
+\tilde{i}_1(n)\left(\omega\cos(\omega\gamma T) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega\gamma T) \right)
 + i_2(n)\left(\omega\cos(\omega\gamma T)  + \alpha\sin(\omega\gamma T)\right)
 \right]
 $$
@@ -454,14 +454,14 @@ $$
 $$
 + \frac{e^{-\alpha\gamma T}}{\omega}
 \left[
-\tilde{i}_1[n] \left(\omega\cos(\omega\gamma T) + \frac{(\alpha - \omega)^2}{2\alpha}\sin(\omega\gamma T) \right)
+\tilde{i}_1[n] \left(\omega\cos(\omega\gamma T) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega\gamma T) \right)
 + i_2[n]\left(\omega\cos(\omega\gamma T)  + \alpha\sin(\omega\gamma T)\right)
 \right] =
 $$ 
 $$
 = L\cdot (1-\gamma) + \frac{e^{-\alpha\gamma T}}{\omega}
 \left[
-\tilde{i}_1[n]\left(\omega\cos(\omega\gamma T) + \frac{(\alpha - \omega)^2}{2\alpha}\sin(\omega\gamma T) \right) \right. +
+\tilde{i}_1[n]\left(\omega\cos(\omega\gamma T) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega\gamma T) \right) \right. +
 $$
 $$
 \left.
@@ -505,7 +505,7 @@ e^q I^*(q) - e^qi[0] - L\cdot(1-\gamma)\frac{e^q}{e^q - 1} =
 $$
 $$
 = \frac{e^{-\alpha\gamma T}}{\omega} \left[
--\tilde{I}_1^*(q) \frac{(\alpha+\omega)^2}{2\alpha} sin(\omega\gamma T) 
+-\tilde{I}_1^*(q) \frac{\alpha^2+\omega^2}{2\alpha} sin(\omega\gamma T) 
 + I^*(q) \left(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)\right)
 \right]
 $$
@@ -529,7 +529,7 @@ $$
 \begin{array}{cc}
 {\displaystyle \frac{e^{-\alpha\gamma T}}{\omega}(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)) - e^q} 
 &
-{\displaystyle -\frac{e^{-\alpha\gamma T}}{\omega}\frac{(\alpha+\omega)^2}{2\alpha}\sin(\omega\gamma T)}\\
+{\displaystyle -\frac{e^{-\alpha\gamma T}}{\omega}\frac{\alpha^2+\omega^2}{2\alpha}\sin(\omega\gamma T)}\\
 {\displaystyle \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega}\sin(\omega\gamma T)}
 &
 {\displaystyle \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega}
