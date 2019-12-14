@@ -8,5 +8,6 @@ i10=0.
 i20=0.
 
 set xrange [0:0.004]
-plot exp(-a*x)*((i10-u/r)*(a/w*sin(w*x)+cos(w*x))+i20/w*sin(w*x))+u/r, \
-exp(-a*x)/w*(-(i10-u/r)*(a*a+w*w)/2/a*sin(w*x) + i20/2/a*(w*cos(w*x) + a*sin(w*x)))
+plot exp(-a*x)*((i10-u/r)*(a/w*sin(w*x)+cos(w*x))+i20*2*a/w*sin(w*x))+u/r, \
+exp(-a*x)/w*((i10-u/r)*(w*cos(w*x) + (a*a-w*w)/2/a*sin(w*x)) + \
+i20*(w*cos(w*x) + a*sin(w*x)))
