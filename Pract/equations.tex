@@ -254,18 +254,18 @@ $$
 $$
 i_2(t) = RC\left\{-\alpha e^{-\alpha t} \left[ \left(i_1(0) - \frac{U}{R}\right)
 \left(\cos(\omega t) + \frac{\alpha}{\omega} \sin(\omega t)\right)
-+ i_2(0) \frac{2\alpha\sin(\omega t)}{\omega} \right]\right. +
++ i_2(0) \frac{2\alpha\cdot\sin(\omega t)}{\omega} \right]\right. +
 $$
 $$
 + \left.e^{-\alpha t} \left[  \left(i_1(0) - \frac{U}{R}\right) 
-\left(-\omega\sin(\omega t) + \alpha \cos(\omega t)\right) + i_2(0)\cos(\omega t)
+\left(-\omega\sin(\omega t) + \alpha \cos(\omega t)\right) + i_2(0)2\alpha\cos(\omega t)
 \right]\right\} =
 $$
 
 $$
 =  e^{-\alpha t} \frac{1}{2\alpha} \left[ \left(i_1(0) - \frac{U}{R}\right)
 \left(-\omega - \frac{\alpha^2}{\omega}\right)\sin(\omega t) + 
-i_2(0)\left(\cos(\omega t) - \frac{\alpha}{\omega}\sin(\omega t)\right)
+i_2(0)\cdot 2\alpha\left(\cos(\omega t) - \frac{\alpha}{\omega}\sin(\omega t)\right)
 \right] 
 $$
 
@@ -487,12 +487,12 @@ $$
 \tilde{i}_1[n+1] +\frac{U}{R} = \left(\frac{e^{-\alpha\gamma T}}{\omega} 
 \left[ \tilde{i}_1[n] 
 \left(\omega\cos(\omega\gamma T) + \alpha \sin(\omega\gamma T)\right)
-+ i_2[n] \sin(\omega\gamma T) \right] + \frac{U}{R}\right) e^{-\beta (1-\gamma)} =
++ i_2[n] 2\alpha\sin(\omega\gamma T) \right] + \frac{U}{R}\right) e^{-\beta (1-\gamma)} =
 $$ 
 $$
 = \frac{e^{-\alpha\gamma T -\beta(1-\gamma)}}{\omega} \left( \tilde{i}_1[n] 
 \left(\omega\cos(\omega\gamma T) + \alpha \sin(\omega\gamma T)\right)
-+ \left(\tilde{i}[n] - \tilde{i}_1[n]\right)\sin(\omega\gamma T) \right)
++ \left(\tilde{i}[n] - \tilde{i}_1[n]\right)2\alpha\sin(\omega\gamma T) \right)
 + \frac{U}{R} e^{-\beta (1-\gamma)}
 $$
 
@@ -523,7 +523,7 @@ $$
 $$
 = \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega} \left(
 \tilde{I}_1^*(q) \left(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)\right)
-+ \left(I^*(q) - \tilde{I}^*_1(q) \right)\sin(\omega\gamma T)
++ \left(I^*(q) - \tilde{I}^*_1(q) \right)\cdot 2\alpha\sin(\omega\gamma T)
 \right)
 $$
 
@@ -536,10 +536,10 @@ $$
 {\displaystyle \frac{e^{-\alpha\gamma T}}{\omega}(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)) - e^q} 
 &
 {\displaystyle -\frac{e^{-\alpha\gamma T}}{\omega}\frac{\alpha^2+\omega^2}{2\alpha}\sin(\omega\gamma T)}\\
-{\displaystyle \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega}\sin(\omega\gamma T)}
+{\displaystyle 2\alpha\frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega}\sin(\omega\gamma T)}
 &
 {\displaystyle \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega}
-	\left( \omega\cos(\omega\gamma T) + (\alpha -1)\sin(\omega\gamma T)\right)} - e^q
+	\left( \omega\cos(\omega\gamma T) - \alpha \sin(\omega\gamma T)\right)} - e^q
 \end{array}
 \right)\times
 $$
@@ -559,4 +559,13 @@ I^*(q)\\
 \end{array}
 \right)
 $$
+
+\subsection{Предельное значение}
+
+Предельное значение $t\rightarrow \infty$ определяется по формуле:
+
+$$
+\lim_{n\rightarrow \infty} (e^q -1) F^*(q)
+$$
+
 \end{document}
