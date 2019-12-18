@@ -408,12 +408,231 @@ i_1^\prime = \tilde{I}_1\cdot p - i_1(0); \; \; \;  i_2^\prime = p \tilde{I}_2 -
 $$
 
 $$
-%\left\{
-%	\begin{array}{lcl}
-%		p\cdot \tilde{I}_1 - i_1(0) &=& \frac{1}{RC} \cdot \tilde{I}_2\\[1.5mm]
-%		p\cdot \tilde{I}_2 - i_2(0) &=& \frac{U}{L}\cdot \frac{1}{p} - \frac{R}{L}\cdot \tilde{I}_1 -  \frac{1}{RC} \cdot \tilde{I}_2
-%	\end{array}
-%\right.
+\left\{
+	\begin{array}{lcl}
+		p\cdot \tilde{I}_1 - i_1(0) &=& \frac{1}{RC} \cdot \tilde{I}_2\\[1.5mm]
+		p\cdot \tilde{I}_2 - i_2(0) &=& \frac{U}{L}\cdot \frac{1}{p} - \frac{R}{L}\cdot \tilde{I}_1 -  \frac{1}{RC} \cdot \tilde{I}_2
+	\end{array}
+\right.
+$$
+
+$$
+\left\{
+\begin{array}{lcl}
+	p\cdot I_1 - \frac{1}{RC}\cdot I_2& =& i_1(0)\\[1.5mm]
+	\frac{R}{L}\cdot I_1 + \left( p + \frac{1}{RC}\right) I_2 &=& i_2(0) + \frac{U}{L}\cdot \frac{1}{p}
+\end{array}
+\right.
+$$
+
+$$
+\Delta = \left| 
+\begin{array}{cc} p          & -\frac{1}{RC} \\[1.5mm]
+	\frac{R}{L} & p + \frac{1}{RC}
+\end{array}\right| =
+p\left(p + \frac{1}{RC}\right) = p^2 + \frac{1}{RC}\cdot p + \frac{1}{LC}=
+p^2 +\frac{1}{RC}\cdot p + \frac{1}{LC} =
+$$
+$$
+=p^2 + 2\cdot\frac{1}{2RC}p + \frac{1}{4R^2C^2} - \frac{1}{4R^2C^2} + \frac{1}{LC} =
+\left(p+\frac{1}{2RC}\right)^2 - \frac{1}{4R^2C^2} \left( 1 - \frac{4R^2C}{L}\right) =
+$$
+$$
+=\left(p + \frac{1}{2RC}\right)^2 + \frac{1}{4R^2C^2}\left(\frac{4R^2C}{L}-1\right)
+$$
+
+$$
+\Delta_1 = \left|
+\begin{array}{cc}
+	i_1(0) & - \frac{1}{RC} \\[1.5mm]
+	i_2(0) +\frac{U}{L}\cdot\frac{1}{p}& \left(p + \frac{1}{RC}\right) 
+\end{array}
+\right| =
+i_1(0)\left(p + \frac{1}{RC}\right) + \frac{1}{RC}\left(i_2(0) + \frac{U}{L}\cdot {1}{p}\right) =
+$$
+$$
+= \frac{1}{RC}(i_1(0) + i_2(0)) + i_1(0)\cdot p + \frac{U}{RLC} \cdot{1}{p} 
+$$
+
+$$
+\Delta_2 = \left|
+\begin{array}{cc} p          & i_1(0) \\[1.5mm]
+\frac{R}{L} & i_2(0) + \frac{U}{L}\cdot\frac{1}{p}
+\end{array}\right| = p\left(i_2(0)+\frac{U}{L}\cdot{1}{p}\right) - i_1(0)\frac{R}{L} =
+i_2(0)p + \frac{U}{L} - \frac{R}{L}i_1(0)
+$$
+
+
+$$
+I_1(p) = \frac{\frac{1}{RC}(i_1(0)+i_2(0)) + i_1(0)\cdot p + \frac{U}{RLC}\cdot \frac{1}{p}}
+{\left(p + \frac{1}{2RC}\right)^2 + \frac{1}{4R^2C^2}\left(\frac{4R^2C}{L} - 1\right)}
+$$
+
+$$
+I_2(p) = \frac{\frac{U}{L}- \frac{R}{L}i_1(0) + i_2(0)\cdot p}
+{\left(p + \frac{1}{2RC}\right)^2 + \frac{1}{4R^2C^2}\left(\frac{4R^2C}{L} - 1\right)}
+$$
+
+разлагаем на множители знаменатель, и заменяем переменные
+$$
+\alpha = \frac{1}{2RC}; \omega = \frac{1}{2RC}\sqrt{\frac{4R^2C}{L}-1}
+$$
+
+$$
+\Delta = \left(p + \frac{1}{2RC}\right)^2 + \frac{1}{4R^2C^2}\left(\frac{4R^2C}{L} - 1\right) =
+(p+\alpha)^2 - (-1)\cdot\omega^2 =
+$$
+$$
+=(p+\alpha)^2 - (j\cdot\omega)^2 = (p + \alpha - j\cdot\omega)(p+\alpha+j\cdot\omega)
+$$
+%$$
+%\Delta_1 = i_1(0)(p + 2\alpha) + 2\alpha\left(i_2(0) + \frac{U}{L}\cdot\frac{1}{p}\right)
+%$$
+
+Разлагаем на множители по правилу:
+$$
+\xi p + \zeta = \frac{A}{p+a} + \frac{B}{p+b}
+$$
+
+если $p=-a$, то $-\xi a + \zeta = A(b-a)$
+
+если $p=-b$, то $-\xi b + \zeta = B(b-a)$
+
+В нашем случае:
+
+$b=\alpha+i\omega; a = \alpha-i\omega; \xi = i_2(0); \zeta=\frac{U}{L}-\frac{R}{L} i_1(0) \Rightarrow$ 
+
+$$
+\zeta - \xi a = \frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)(\alpha-j\omega)
+$$
+$$
+\zeta-\xi b = \frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)(\alpha + j\omega)
+$$
+$$
+b-a = 2j\omega
+$$
+
+$$
+I_2(p) = \frac{\frac{U}{L}- \frac{R}{L}i_1(0) + i_2(0)\cdot p}
+{\left(p + \frac{1}{2RC}\right)^2 + \frac{1}{4R^2C^2}\left(\frac{4R^2C}{L} - 1\right)}=
+\frac{\frac{U}{L}- \frac{R}{L}i_1(0) + i_2(0)\cdot p}{(p + \alpha - j\cdot\omega)(p+\alpha+j\cdot\omega)} =
+$$
+$$
+=\frac{\frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)(\alpha-j\omega)}{2j\omega}
+\frac{1}{(p + \alpha - j\omega)} -
+\frac{\frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)(\alpha + j\omega)}{2j\omega}
+\frac{1}{(p + \alpha + j\omega)}=
+$$
+
+$$
+=\frac{\frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)\alpha}{2j\omega}
+\left[\frac{1}{p+\alpha-j\omega} - \frac{1}{p+\alpha+j\omega} \right] + 
+\frac{i_2(0)}{2}\left[\frac{1}{p+\alpha-j\omega} + \frac{1}{p+\alpha+j\omega} \right]
+\doteqdot
+$$
+После обратного преобразования Лапласа
+
+$$
+\doteqdot
+\frac{\frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)\alpha}{2j\omega}
+\left[e^{-\alpha t}\cdot e^{j\omega t} - e^{-\alpha t}\cdot e^{-j\omega t}\right]
++\frac{i_2(0)}{2}\left[e^{-\alpha t}\cdot e^{j\omega t} + e^{-\alpha t}\cdot e^{-j\omega t}\right] =
+$$
+$$
+= \frac{\left(\frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)\alpha\right)e^{-\alpha t}}{\omega} 
+\left[\frac{e^{j\omega t} -  e^{-j \omega t}}{2j}\right] 
++ i_2(0) e^{-\alpha t} \left[\frac{e^{j\omega t} +  e^{-j \omega t}}{2}\right]
+$$
+$$
+i_2(t) = \left[ \left(\frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)\alpha\right)\frac{\sin(\omega t)}{\omega}
++ i_2(0)\cos(\omega t) \right] e^{-\alpha t}
+$$
+заменяя координаты ${\displaystyle \tilde{i}_1(t) = i_1(t) - \frac{U}{R}}$, 
+а также ${\displaystyle \frac{R}{L} = \frac{\alpha^2+\omega^2}{2\alpha}}$
+
+$$
+i_2(t) = e^{-\alpha t}\left[ \left(-\frac{\alpha^2+\omega^2}{2\alpha} \tilde{i}_1(0) - \alpha i_2(0)\right) 
+\frac{\sin(\omega t)}{\omega} + i_2(0)\cos(\omega t)\right]
+$$
+
+
+$$
+\frac{\partial}{\partial t}i_2(t) = -\alpha e^{-\alpha t}
+\left[ \left(\frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)\alpha\right)\frac{\sin(\omega t)}{\omega}
++ i_2(0)\cos(\omega t) \right] +
+$$
+$$
++e^{-\alpha t} \left[\left(\frac{U}{L}-\frac{R}{L} i_1(0) - i_2(0)\alpha\right)\cos(\omega t) 
+- i_2(0)\omega \sin(\omega t)\right] =
+$$
+$$
+= e^{-\alpha t} \left[\left(-\left(\frac{U}{L} - \frac{R}{L}i_1(0) - \alpha i_2(0)\right) 
+\frac{\alpha}{\omega} - i_2(0)\omega\right)\sin(\omega t)\right. +
+$$
+$$
++\left.\left(-\alpha i_2(0) + \frac{U}{L} - \frac{R}{L}i_1(0) - \alpha i_2(0) \right)\cos(\omega t)
+\right]
+$$
+
+Из системы 
+$$
+\left\{
+\begin{array}{lcl}
+	L(i_1^\prime + i_2^\prime) + Ri_1 = U\\[1.5mm]
+	i_1^\prime = \frac{1}{RC} i_2
+\end{array}\right. \Rightarrow
+i_1 = \frac{U}{R} - \frac{L}{R}\left(i_2^\prime + \frac{1}{RC}i_2\right)
+$$
+
+$$
+i_1(t) = \frac{U}{R} - \frac{L}{R}\left[\left(-\left(\frac{U}{L}-\frac{R}{L}i_1(0) 
+- \alpha i_2(0)\right)\frac{\alpha}{\omega}  -\omega i_2(0)\right)\sin(\omega t)\right. +
+$$
+$$
++\!\left.\left(\!\frac{U}{L}-\frac{R}{L}i_1(0) -2\alpha i_2(0)\!\right)\!\cos(\omega t)
+ +
+\frac{1}{RC}\!\left(\!\!\left(\frac{U}{L} - \frac{R}{L}i_1(0) -\alpha i_2(0)\!\right)\!\frac{\sin(\omega t)}{\omega}
++i_2(0)\cos(\omega t)\right)
+\right]=
+$$
+
+$$
+= \frac{U}{R} - \frac{L}{R} \!\left[\left(\!\!\left(-\frac{U-Ri_1(0)}{L} + \alpha i_2(0) %\right) 
+\!\right)\!\frac{\alpha}{\omega} -\omega i_2(0)+ 2\alpha \left(\frac{U - Ri_1(0)}{L} - \alpha i_2(0)\right)\frac{1}{\omega}
+\!\right)\sin(\omega t)\right. +
+$$
+$$
++ \left.\left(\frac{U -Ri_1(0)}{L} - 2\alpha i_2(0) + 2\alpha i_2(0) \right)\cos(\omega t)\right]
+e^{-\alpha t} =
+$$
+$$
+=\frac{U}{R} - e^{-\alpha t}\frac{L}{R}\left[\frac{U-Ri_1(0)}{L}\cos(\omega t) +
+\left(\frac{\alpha}{\omega} \left( \frac{2(U-Ri_1(0))}{L}  -2 \alpha i_2(0) + \alpha i_2(0) 
+\right.\right.\right. -
+$$
+$$
+-\left.\frac{U-Ri_1(0)}{L}\right) 
+-\left.\left.\alpha i_2(0)\right)\sin(\omega t)\right] =
+%-i_2(0)\omega\right)\sin(\omega t)\right] 
+$$
+$$
+=\frac{U}{R} - e^{-\alpha t} \frac{L}{R}\left[\frac{U-Ri_1(0)}{L}\cos(\omega t) +
+\left(\frac{\alpha}{\omega}
+\left(\frac{U-Ri_1(0)}{L} - i_2(0)\alpha\right) - i_2(0)\omega
+\right)\sin(\omega t) 
+\right]
+$$
+
+$$
+i_1(t)=\frac{U}{R} - e^{-\alpha t} \left[ -\tilde{i}_1(0)\cos(\omega t)  + 
+\left( \frac{\alpha}{\omega}\left(-\tilde{i}_1(0)\right) -i_2(0)\frac{\alpha^2}{\omega}\frac{L}{R}
+- i_2(0)\omega\frac{L}{R} \right)\sin(\omega t ) %\right)
+\right]
+$$
+
+$$
+\tilde{i}_1(t) = e^{-\alpha t}\left[ \tilde{i}_1(0)\cos(\omega t) + \frac{\alpha}{\omega}\tilde{i}_1(0) + 
+\frac{2\alpha}{\omega} i_2(0)) \sin(\omega t)\right]
 $$
 
 \subsection{Дискретное преобразование Лапласа}
