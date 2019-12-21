@@ -309,7 +309,7 @@ $$
 $$
 \tilde{i}(t) = \frac{e^{-\alpha t}}{\omega} 
 \left[
-	\tilde{i}_1(0)\left(\omega\cos(\omega t) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega t) \right)
+\omega	\tilde{i}_1(0)\left(\omega\cos(\omega t) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega t) \right)
 + i_2(0)\left(\omega\cos(\omega t)  + \alpha\sin(\omega t)\right)
 \right]
 $$
@@ -349,26 +349,29 @@ $$
 $$
 RC \frac{d U_C}{dt} + U_C = 0
 $$
-Введем новую переменную -- относительное время
-$$
-\bar{t} = \frac{t}{T}
-$$
-Введем новую переменную $\beta^{\prime\prime} = \frac{T}{RC}$
+%Введем новую переменную -- относительное время
+%$$
+%\bar{t} = \frac{t}{T}
+%$$
+%Введем новую переменную $\beta^{\prime\prime} = \frac{T}{RC}$
 
-тогда для уравнения
-$$
-\frac{1}{\beta^{\prime\prime}}\frac{dU_C}{dt} + U_C = 0
-$$
+%тогда для уравнения
+%$$
+%\frac{1}{\beta^{\prime\prime}}\frac{dU_C}{dt} + U_C = 0
+%$$
 
-получаем решение
+ для уравнения получаем решение
 $$
-U_C(t) = B_c e^{-\beta^{\prime\prime}(\bar{t}-n-\gamma)}
+U_C(t) = B_c e^{-\frac{1}{RC}t}
 $$
 аналогично для тока через резистор
 $$
-i_1(t) = i_1(n+\gamma) e^{-\beta^{\prime\prime}(\bar{t}-n-\gamma)}
+i_1(t) = i_1(n+\gamma) e^{-\frac{1}{RC}t}
 $$
 
+$$
+i_1(n+1) = i_1(n+\gamma) e^{-\frac{1}{RC}(1-\gamma)\cdot T}
+$$
 
 для цепи с индуктивностью 
 $$
@@ -376,7 +379,7 @@ U = L\frac{d i_L}{dt}
 $$
 решение уравнения:
 $$
-i(t) = i(n+\gamma) + L\cdot t
+i(t) = i(n+\gamma) + \frac{U}{L}\cdot t
 $$
 
 
@@ -645,13 +648,13 @@ i_2(n+1) = i(n+1) - i_1(n+1)
 $$
 
 $$
-U_c(n+1) = U_c(n+\gamma) e^{-\beta^\prime (\bar{t} - n - \gamma)} 
+U_c(n+1) = U_c(n+\gamma) e^{-\frac{(1-\gamma)T}{RC}}
 $$
 $$
-i_1(n+1) = i_1(n+\gamma) e^{-\beta (1-\gamma)}
+i_1(n+1) = i_1(n+\gamma) e^{-\frac{(1-\gamma)T}{RC}}
 $$
 $$
-i(n+1) = i(n+\gamma) + L\cdot (1-\gamma)
+i(n+1) = i(n+\gamma) + \frac{U}{L}\cdot (1-\gamma)T
 $$
 
 $$
@@ -674,7 +677,7 @@ $$
 
 Выразим $n+1$ через $n$:
 $$
-\tilde{i}[n+1] = L\cdot (1-\gamma) +
+\tilde{i}[n+1] = \frac{U}{L}\cdot (1-\gamma)T +
 $$
 $$
 + \frac{e^{-\alpha\gamma T}}{\omega}
@@ -684,7 +687,7 @@ $$
 \right] =
 $$ 
 $$
-= L\cdot (1-\gamma) + \frac{e^{-\alpha\gamma T}}{\omega}
+= \frac{U}{L}\cdot (1-\gamma)T + \frac{e^{-\alpha\gamma T}}{\omega}
 \left[
 \tilde{i}_1[n]\left(\omega\cos(\omega\gamma T) + \frac{\alpha^2 - \omega^2}{2\alpha}\sin(\omega\gamma T) \right) \right. +
 $$
@@ -706,13 +709,13 @@ $$
 \tilde{i}_1[n+1] +\frac{U}{R} = \left(\frac{e^{-\alpha\gamma T}}{\omega} 
 \left[ \tilde{i}_1[n] 
 \left(\omega\cos(\omega\gamma T) + \alpha \sin(\omega\gamma T)\right)
-+ i_2[n] 2\alpha\sin(\omega\gamma T) \right] + \frac{U}{R}\right) e^{-\beta (1-\gamma)} =
++ i_2[n] 2\alpha\sin(\omega\gamma T) \right] + \frac{U}{R}\right) e^{-\frac{(1-\gamma)T}{RC}} =
 $$ 
 $$
-= \frac{e^{-\alpha\gamma T -\beta(1-\gamma)}}{\omega} \left( \tilde{i}_1[n] 
+= \frac{e^{-\alpha\gamma T -\frac{(1-\gamma)T}{RC}}}{\omega} \left( \tilde{i}_1[n] 
 \left(\omega\cos(\omega\gamma T) + \alpha \sin(\omega\gamma T)\right)
 + \left(\tilde{i}[n] - \tilde{i}_1[n]\right)2\alpha\sin(\omega\gamma T) \right)
-+ \frac{U}{R} e^{-\beta (1-\gamma)}
++ \frac{U}{R} e^{-\frac{(1-\gamma)T}{RC}}
 $$
 
 На основании теоремы сдвига:
@@ -726,7 +729,7 @@ D\left\{i_1[n+1]\right\} &=& e^q I_1^*(q) - e^q i_1[0]
 $$
 
 $$
-e^q I^*(q) - e^qi[0] - L\cdot(1-\gamma)\frac{e^q}{e^q - 1} = 
+e^q I^*(q) - e^qi[0] - \frac{U}{L}\cdot(1-\gamma)T\frac{e^q}{e^q - 1} = 
 $$
 $$
 = \frac{e^{-\alpha\gamma T}}{\omega} \left[
@@ -737,10 +740,10 @@ $$
 
 $$
 e^q\tilde{I}^*_1(q) - e^q i_1[0] + 
-\frac{U}{R}\left(1- e^{-\beta(1-\gamma)} \right) \frac{e^q}{e^q-1} =
+\frac{U}{R}\left(1- e^{-\frac{(1-\gamma)T}{RC}} \right) \frac{e^q}{e^q-1} =
 $$
 $$
-= \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega} \left(
+= \frac{e^{-\alpha\gamma T - \frac{(1-\gamma)T}{RC}}}{\omega} \left(
 \tilde{I}_1^*(q) \left(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)\right)
 + \left(I^*(q) - \tilde{I}^*_1(q) \right)\cdot 2\alpha\sin(\omega\gamma T)
 \right)
@@ -755,9 +758,9 @@ $$
 {\displaystyle \frac{e^{-\alpha\gamma T}}{\omega}(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)) - e^q} 
 &
 {\displaystyle -\frac{e^{-\alpha\gamma T}}{\omega}\frac{\alpha^2+\omega^2}{2\alpha}\sin(\omega\gamma T)}\\
-{\displaystyle 2\alpha\frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega}\sin(\omega\gamma T)}
+	{\displaystyle 2\alpha\frac{e^{-\alpha\gamma T - \frac{(1-\gamma)T}{RC}}}{\omega}\sin(\omega\gamma T)}
 &
-{\displaystyle \frac{e^{-\alpha\gamma T - \beta(1-\gamma)}}{\omega}
+	{\displaystyle \frac{e^{-\alpha\gamma T - \frac{(1-\gamma)T}{RC}}}{\omega}
 	\left( \omega\cos(\omega\gamma T) - \alpha \sin(\omega\gamma T)\right)} - e^q
 \end{array}
 \right)\times
@@ -771,10 +774,45 @@ I^*(q)\\
 \right)=
 \left(
 \begin{array}{c}
-{\displaystyle - e^qi[0] - L\cdot(1-\gamma)
+	{\displaystyle - e^qi[0] - \frac{U}{L}\cdot(1-\gamma)T
 	\frac{e^q}{e^q - 1}} \\[2.2mm]
 {\displaystyle - e^q i_1[0] +
-\frac{U}{R}\left(1- e^{-\beta(1-\gamma)} \right) \frac{e^q}{e^q-1}}
+	\frac{U}{R}\left(1- e^{-\frac{(1-\gamma)T}{RC}} \right) \frac{e^q}{e^q-1}}
+\end{array}
+\right)
+$$
+
+$$
+-\alpha\gamma T - \frac{1-\gamma}{RC}T = -\alpha\gamma T - 2\alpha(1-\gamma)T = - \alpha(2-\gamma)T
+$$
+
+$$
+\hspace{-2cm}
+\left(
+\begin{array}{cc}
+{\displaystyle \frac{e^{-\alpha\gamma T}}{\omega}(\omega\cos(\omega\gamma T) + \alpha\sin(\omega\gamma T)) - e^q}
+&
+{\displaystyle -\frac{e^{-\alpha\gamma T}}{\omega}\frac{\alpha^2+\omega^2}{2\alpha}\sin(\omega\gamma T)}\\
+	{\displaystyle 2\alpha\frac{e^{-\alpha(2-\gamma)T}}{\omega}\sin(\omega\gamma T)}
+&
+        {\displaystyle \frac{e^{-\alpha(2-\gamma)T}}{\omega}
+        \left( \omega\cos(\omega\gamma T) - \alpha \sin(\omega\gamma T)\right)} - e^q
+\end{array}
+\right)\times
+$$
+$$
+\times\left(
+\begin{array}{c}
+I^*(q)\\
+\tilde{I}_1^*(q)
+\end{array}
+\right)=
+\left(
+\begin{array}{c}
+        {\displaystyle - e^qi[0] - \frac{U}{L}\cdot(1-\gamma)T
+        \frac{e^q}{e^q - 1}} \\[2.2mm]
+{\displaystyle - e^q i_1[0] +
+        \frac{U}{R}\left(1- e^{-\frac{(1-\gamma)T}{RC}} \right) \frac{e^q}{e^q-1}}
 \end{array}
 \right)
 $$
@@ -784,7 +822,11 @@ $$
 Предельное значение $t\rightarrow \infty$ определяется по формуле:
 
 $$
-\lim_{n\rightarrow \infty} (e^q -1) F^*(q)
+\lim_{n\rightarrow \infty} f[n] =\lim_{q\rightarrow 0} (e^q -1) F^*(q)
 $$
+
+
+Предельное значение можно найти с помощью reduce-algebra
+\lstinputlisting{laplace.red}
 
 \end{document}
