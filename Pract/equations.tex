@@ -1,7 +1,9 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{extsizes}
 
-\usepackage[T2A]{fontenc}
+%\usepackage[T2A]{fontenc}
+%\usepackage[utf8x]{inputenc}
+\usepackage[TS1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{tikz}
@@ -829,4 +831,26 @@ $$
 Предельное значение можно найти с помощью reduce-algebra
 \lstinputlisting{laplace.red}
 
+reduce-algebra дает решение для $\lim_{q\rightarrow 0} (e^q -1) F^*(q)$
+
+
+\lstinputlisting{laplace.result}
+
+Знаменатель
+$$
+2\alpha L R\cdot(e^{\alpha\gamma T}\omega - \cos(\gamma\omega T)\omega 
+\left( e^{2\alpha\gamma T} + e^{2\alpha T}\right)
++\sin(\gamma\omega T)\left( e^{2\alpha\gamma T} - e^{2\alpha T}\right)\alpha)
+$$
+
+Числитель
+$$
+2e^{2\alpha\gamma T}\cos(\gamma\omega T)\alpha\omega R T (\gamma - 1)
++e^{2\alpha\gamma T}\alpha^2 R T (1-\gamma)\sin(\gamma\omega T)
+-e^{2\alpha\gamma T}\sin(\gamma\omega T) L(\alpha^2 + \omega^2)
+$$
+$$
++2e^{\alpha\gamma T + 2\alpha T} \alpha R \omega T (1-\gamma)
++ e^{2\alpha T}\sin(\gamma\omega T)L(\alpha^2 + \omega^2)
+$$
 \end{document}
