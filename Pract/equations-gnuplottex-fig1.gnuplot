@@ -1,6 +1,6 @@
 set terminal epslatex color dashed
 set output 'equations-gnuplottex-fig1.tex'
-set title "повышающий преобразователь"
+set title "boost converter"
 set xlabel "t, сек"
 set ylabel "V, вольт"
 set grid
@@ -14,5 +14,5 @@ set yrange [6.841230e+01:2.161226e+02]
 #set y2tics 1
 set format y "%g"
 set format x "%g"
-plot 'boost_result.data' using 1:2 with lines lw 1 lc rgb "blue " title "$U_{in}$",\
-'boost_result.data' using 3:4 with lines lw 1 lc rgb "red" title "$U_{out}$" 
+plot 'boost_result.data' using 1:2 with lines lw 1 lc rgb "blue" title "$V_{in}$",\
+'boost_result.data' using 3:4 with lines lw 1 lc rgb "red" title "$V_{out}$" 

@@ -8,6 +8,5 @@ f:=mat((     -e^q*i0 -U/L*(1-g)*t*e^q/(e^q-1)    ),
 
 mm:=1/m*f;
 
-IL:=limit(mm(1,1)*(e^q-1),q,0); // current through L 
-Ir:=limit(mm(2,1)*(e^q-1),q,0); // current through R
-
+IL:=limit(mm(1,1)*(e^q-1),q,0); % current through L 
+Ir:=limit(mm(2,1)*(e^q-1),q,0); % current through R

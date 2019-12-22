@@ -13,6 +13,7 @@
 \usepackage{amssymb}
 \usepackage[scr]{rsfso}
 
+\usepackage{gnuplottex}
 
 
 %%% Межстрочный интервал
@@ -75,8 +76,27 @@
 %\end{tikzpicture}
 
 
-%\section{}
+\section{Повышающий преобразователь}
 
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}
+        \draw(0,3) to[L,l=L,o-] (3,3) -- (6,3) to [C,l_=C] (6,0) to[short,-o] (0,0);
+	\draw(4,3) to[short] (8.5,3) to[R,l_=R] (8.5,0) to [short] (6,0);
+	\draw(3,0) to[cosw,l_=SW] (3,3);
+	\draw (3,3) to[D-,l=D] (6,3);
+        \draw[->,>=latex] (9.2,2.1) -- (9.2,0.9) node[midway,right] {$i_1$};
+        \draw[->,>=latex] (6.7,2.1) -- (6.7,0.9) node[midway,right] {$i_2$};
+        \draw (0,1.5) node {$U_1$};
+\end{tikzpicture}
+\caption{повышающий преобразователь}
+\end{figure}
+
+Рассмотрим работу преобразователя в двух стадиях:
+
+\subsection{стадия I}
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}
 	\draw(0,3) to[L,l=L,o-] (3,3) -- (4,3) to [C,l_=C] (4,0) to[short,-o] (0,0);
 	\draw(4,3) to[short,*-] (6.5,3) to[R,l_=R] (6.5,0) to [short,-*] (4,0);
@@ -84,7 +104,8 @@
 	\draw[->,>=latex] (4.7,2.1) -- (4.7,0.9) node[midway,right] {$i_2$};
 	\draw (0,1.5) node {$U_1$};
 \end{tikzpicture}
-
+\caption{стадия I работы повышающего преобразователя}
+\end{figure}
 At t=0 we have $i_1(0) = i_{10}$ and $i_2(0) = i_{20}$.
 $$
 U=const
@@ -341,10 +362,15 @@ $$
 
 Сравнить решения.
 
+\subsection{стадия II}
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}
 \draw(0,2) to [L,o-] (2,2) -- (2,0) to[short,-o] (0,0);
 \draw ({4+0},0) to[C] ({4+0},2) -- ({4+2},2) to[R] ({4+2},0) -- ({4+0},0); 
 \end{tikzpicture}
+\caption{стадия II работы повышающего преобразователя}
+\end{figure}
 
 уравнение цепи на интервале $(n+\gamma)T \le t \le (n+1)T$
 
@@ -802,7 +828,7 @@ $$
 \end{array}
 \right)\times
 $$
-$$
+\begin{equation}
 \times\left(
 \begin{array}{c}
 I^*(q)\\
@@ -817,33 +843,35 @@ I^*(q)\\
         \frac{U}{R}\left(1- e^{-\frac{(1-\gamma)T}{RC}} \right) \frac{e^q}{e^q-1}}
 \end{array}
 \right)
-$$
+\end{equation}
 
 \subsection{Предельное значение}
 
 Предельное значение $t\rightarrow \infty$ определяется по формуле:
 
-$$
+\begin{equation}
 \lim_{n\rightarrow \infty} f[n] =\lim_{q\rightarrow 0} (e^q -1) F^*(q)
-$$
+\end{equation}
 
 
 Предельное значение можно найти с помощью reduce-algebra
 \lstinputlisting{laplace.red}
 
-reduce-algebra дает решение для $\lim_{q\rightarrow 0} (e^q -1) F^*(q)$
+reduce-algebra дает решение для предельного тока через индуктивность 
+$I_L = \lim\limits_{q\rightarrow 0} (e^q -1) \left[F^*(q)\right]_{1,1}$
 
 
 \lstinputlisting{laplace.result}
 
-Знаменатель
+
+знаменатель
 $$
 2\alpha L R\cdot(e^{\alpha\gamma T}\omega - \cos(\gamma\omega T)\omega 
 \left( e^{2\alpha\gamma T} + e^{2\alpha T}\right)
 +\sin(\gamma\omega T)\left( e^{2\alpha\gamma T} - e^{2\alpha T}\right)\alpha)
 $$
 
-Числитель
+числитель
 $$
 2e^{2\alpha\gamma T}\cos(\gamma\omega T)\alpha\omega R T (\gamma - 1)
 +e^{2\alpha\gamma T}\alpha^2 R T (1-\gamma)\sin(\gamma\omega T)
@@ -853,4 +881,79 @@ $$
 +2e^{\alpha\gamma T + 2\alpha T} \alpha R \omega T (1-\gamma)
 + e^{2\alpha T}\sin(\gamma\omega T)L(\alpha^2 + \omega^2)
 $$
+
+ток через сопротивление $\tilde{I}_R$ без учета постоянной составляющей $\frac{U}{R}$:
+\lstinputlisting{IR.txt}
+
+ток через сопротивление $I_R$ с учетом постоянной составляющей $\frac{U}{R}$:
+
+$$
+I_R = \frac{U}{R} + \frac{U}{RL}\left\{-e^{2\alpha\gamma T}\cos(\gamma\omega T) L\omega + e^{2\alpha T}\cos(\gamma\omega T) L\omega 
++ e^{3\alpha\gamma T} L\omega\right. -
+$$
+\begin{equation}
+-2e^{2\alpha\gamma T}\sin(\gamma\omega T)\alpha\gamma R T - e^{2\alpha\gamma T}\sin(\gamma\omega T)\alpha L +
+\label{IR}
+\end{equation}
+$$
+\left.+2e^{2\alpha\gamma T}\sin(\gamma\omega T)\alpha R T - e^{\alpha\gamma T + 2\alpha T}L\omega 
++e^{2\alpha T}\sin(\gamma\omega T)\alpha L\right\}/
+$$
+$$
+/\left\{\omega e^{\alpha\gamma T} - \omega\cos(\gamma\omega T) \left(e^{2\alpha\gamma T} 
++ e^{2\alpha T}\right)
++ e^{2\alpha\gamma T}\alpha\sin\gamma\omega T) +\omega e^{\alpha\gamma T + 2\alpha T}
+\right\}
+$$
+
+\subsection{Сравнение аналитических формул с результатами моделирования}
+Смоделируем повышающий преобразователь в программе ngspice:
+\lstinputlisting{check_boost.cir}
+
+\begin{figure}[!ht]%
+	\centering%
+	\begin{gnuplot}[terminal=epslatex, terminaloptions=color dashed]
+set title "boost converter"
+set xlabel "t, сек"
+set ylabel "V, вольт"
+set grid
+unset logscale x
+set xrange [0.000000e+00:1.400000e-02]
+unset logscale y
+set yrange [6.841230e+01:2.161226e+02]
+#set xtics 1
+#set x2tics 1
+#set ytics 1
+#set y2tics 1
+set format y "%g"
+set format x "%g"
+plot 'boost_result.data' using 1:2 with lines lw 1 lc rgb "blue" title "$V_{in}$",\
+		'boost_result.data' using 3:4 with lines lw 1 lc rgb "red" title "$V_{out}$"	
+\end{gnuplot}
+
+	\caption{результаты моделирования повышающего преобразователя в программе ngspice: 
+	$V_{in}$ -- входное напряжение, $V_{out}$ -- напряжение на выходе преобразователя, 
+	частота переключения -- 5кГц,
+	коэффициент заполнения $\gamma=0.5$, $U_1=85$ В, $L=0.102$ Гн, $C=0.75$ мкФ, $R_\textcyrillic{нагрузки}=1157$ Ом}
+\label{result}
+\end{figure}
+
+
+Аналитическое решение по формуле (\ref{IR}) для параметров, приведенных на рис.\ref{result}, дает  $V_{out}=159.16$ В.
+
+Результ моделирования в программе ngspice дает $V_{out}=158.197$ В (измеряем по нижнему краю, потому что в 
+аналитическом решении первой считалась фаза I, когда ключ находится в состоянии низкой проводимости).
+Ошибка от точного решения составляет 0.6\%.
+
+Результ моделирования в программе matlab с решателем ode23tb дает $V_{out}=167.5$ В.
+Ошибка от точного решения составляет 8.34 В или 5.2\%.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.3]{measure_all.png}
+\caption{результаты моделирования повышающего преобразователя в программе matlab: 
+ частота переключения -- 5кГц,
+коэффициент заполнения $\gamma=0.5$, $U_1=85$ В, $L=0.102$ Гн, $C=0.75$ мкФ, $R_\textcyrillic{нагрузки}=1157$ Ом}
+	\label{matlab}
+\end{figure}
 \end{document}

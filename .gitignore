@@ -1,7 +1,6 @@
 *.log
 *.aux
 *.toc 
-*.txt
 *.doc
 *.c
 *.zip
