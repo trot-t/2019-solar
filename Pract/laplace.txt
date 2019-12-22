@@ -1,0 +1,5 @@
+load_package "laplace";
+
+invlap((p*c*r*x0+u/L/p+x0+y0)/(c*R*p^2+p),p,t);
+
+invlap((p*c*r*x0+x0+y0)/(c*R*p^2+p),p,t);
