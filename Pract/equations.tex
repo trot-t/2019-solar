@@ -888,7 +888,7 @@ $$
 ток через сопротивление $I_R$ с учетом постоянной составляющей $\frac{U}{R}$:
 
 $$
-I_R = \frac{U}{R} + \frac{U}{RL}\left\{-e^{2\alpha\gamma T}\cos(\gamma\omega T) L\omega + e^{2\alpha T}\cos(\gamma\omega T) L\omega 
+I_R = \frac{U}{R} + \frac{U}{RL}\left(-e^{2\alpha\gamma T}\cos(\gamma\omega T) L\omega + e^{2\alpha T}\cos(\gamma\omega T) L\omega 
 + e^{3\alpha\gamma T} L\omega\right. -
 $$
 \begin{equation}
@@ -897,13 +897,13 @@ $$
 \end{equation}
 $$
 \left.+2e^{2\alpha\gamma T}\sin(\gamma\omega T)\alpha R T - e^{\alpha\gamma T + 2\alpha T}L\omega 
-+e^{2\alpha T}\sin(\gamma\omega T)\alpha L\right\}/
++e^{2\alpha T}\sin(\gamma\omega T)\alpha L\right)/
 $$
 $$
-/\left\{\omega e^{\alpha\gamma T} - \omega\cos(\gamma\omega T) \left(e^{2\alpha\gamma T} 
+/\left(\omega e^{\alpha\gamma T} - \omega\cos(\gamma\omega T) \left(e^{2\alpha\gamma T} 
 + e^{2\alpha T}\right)
-+ e^{2\alpha\gamma T}\alpha\sin\gamma\omega T) +\omega e^{\alpha\gamma T + 2\alpha T}
-\right\}
++ e^{2\alpha\gamma T}\alpha\sin\gamma\omega T +\omega e^{\alpha\gamma T + 2\alpha T}
+\right)
 $$
 
 \subsection{Сравнение аналитических формул с результатами моделирования}
@@ -927,8 +927,13 @@ set yrange [6.841230e+01:2.161226e+02]
 #set y2tics 1
 set format y "%g"
 set format x "%g"
+set arrow 1 heads from 0.0021,95 to 0.00562,95 size 0.0005,10 
+#set arrow 1 nohead front
+set arrow 2 nohead from 0.0021,89 to 0.0021,185 
+set arrow 3 nohead from 0.00562,89 to 0.00562,160 
 plot 'boost_result.data' using 1:2 with lines lw 1 lc rgb "blue" title "$V_{in}$",\
 		'boost_result.data' using 3:4 with lines lw 1 lc rgb "red" title "$V_{out}$"	
+
 \end{gnuplot}
 
 	\caption{результаты моделирования повышающего преобразователя в программе ngspice: 
@@ -938,6 +943,9 @@ plot 'boost_result.data' using 1:2 with lines lw 1 lc rgb "blue" title "$V_{in}$
 \label{result}
 \end{figure}
 
+% результаты получаются с помощью команды       pdflatex --shell-escape equations.tex
+% как рисовать стрелки: 
+% https://livebook.manning.com/book/gnuplot-in-action-second-edition/chapter-7/70
 
 Аналитическое решение по формуле (\ref{IR}) для параметров, приведенных на рис.\ref{result}, дает  $V_{out}=159.16$ В.
 
