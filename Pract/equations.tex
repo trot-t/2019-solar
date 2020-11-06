@@ -115,8 +115,8 @@ Lets get graphs for $i_1(t), i_2(t)$ from analitic solution of differencial equa
 \begin{equation}
 \left\{
 \begin{array}{lll}
-U_1 = L\frac{\partial i}{\partial t} + R i_1 & \Rightarrow & 0 = \frac{\partial^2 i}{\partial t^2} + R \frac{\partial i_1}{\partial t} \\
-	U_1 = L\frac{\partial i}{\partial t} + \frac{1}{C}\int\limits_0^t i_2(\tau) d\tau & \Rightarrow & 0 = \frac{\partial^2 i}{\partial t^2} + \frac{1}{C} i_2
+U_1 = L\frac{\partial i}{\partial t} + R i_1 & \Rightarrow & 0 = L\frac{\partial^2 i}{\partial t^2} + R \frac{\partial i_1}{\partial t} \\
+	U_1 = L\frac{\partial i}{\partial t} + \frac{1}{C}\int\limits_0^t i_2(\tau) d\tau & \Rightarrow & 0 = L\frac{\partial^2 i}{\partial t^2} + \frac{1}{C} i_2
 \end{array}
 \right.
 \label{initial}
@@ -129,7 +129,7 @@ R\frac{\partial i_1}{\partial t} = \frac{1}{C} i_2 \Rightarrow \frac{\partial i_
 \label{first}
 \end{equation}
 
-из первого уравнения системы (\ref{initial}):
+из первого уравнения системы (\ref{initial}), учитываем $i_1(t) + i_2(t) = i(t)$:
 
 $$
 \frac{\partial i_1}{\partial t} + \frac{\partial i_2}{\partial t} = -\frac{R}{L} i_1 + \frac{U_1}{L} 
