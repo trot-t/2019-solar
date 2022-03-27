@@ -617,6 +617,8 @@ $$
 i_1 = \frac{U}{R} - \frac{L}{R}\left(i_2^\prime + \frac{1}{RC}i_2\right)
 $$
 
+% подставляем значения для $i_2^\prime$ и $i_2$ в уравнение для $i_1$, получаем 
+
 $$
 i_1(t) = \frac{U}{R} - e^{-\alpha t}\frac{L}{R}\left[\left(-\left(\frac{U}{L}-\frac{R}{L}i_1(0) 
 - \alpha i_2(0)\right)\frac{\alpha}{\omega}  -\omega i_2(0)\right)\sin(\omega t)\right. +
@@ -629,6 +631,8 @@ $$
 \right]=
 $$
 
+% $\frac{1}{RC}$ заменаям на $2\alpha$
+
 $$
 = \frac{U}{R} - \frac{L}{R} \!\left[\left(\!\!\left(-\frac{U-Ri_1(0)}{L} + \alpha i_2(0) %\right) 
 \!\right)\!\frac{\alpha}{\omega} -\omega i_2(0)+ 2\alpha \left(\frac{U - Ri_1(0)}{L} - \alpha i_2(0)\right)\frac{1}{\omega}
@@ -638,14 +642,16 @@ $$
 + \left.\left(\frac{U -Ri_1(0)}{L} - 2\alpha i_2(0) + 2\alpha i_2(0) \right)\cos(\omega t)\right]
 e^{-\alpha t} =
 $$
+% здесь e^{-\alpha t} в конце чтобы вошло при печати
+
 $$
 =\frac{U}{R} - e^{-\alpha t}\frac{L}{R}\left[\frac{U-Ri_1(0)}{L}\cos(\omega t) +
 \left(\frac{\alpha}{\omega} \left( \frac{2(U-Ri_1(0))}{L}  -2 \alpha i_2(0) + \alpha i_2(0) 
 \right.\right.\right. -
 $$
 $$
--\left.\frac{U-Ri_1(0)}{L}\right) 
--\left.\left.\alpha i_2(0)\right)\sin(\omega t)\right] =
+-\left.\left.\left.\frac{U-Ri_1(0)}{L}\right) 
+-\omega i_2(0)\right)\sin(\omega t)\right] =
 %-i_2(0)\omega\right)\sin(\omega t)\right] 
 $$
 $$
