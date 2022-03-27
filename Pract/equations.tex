@@ -616,9 +616,7 @@ $$
 \end{array}\right. \Rightarrow
 i_1 = \frac{U}{R} - \frac{L}{R}\left(i_2^\prime + \frac{1}{RC}i_2\right)
 $$
-
-% подставляем значения для $i_2^\prime$ и $i_2$ в уравнение для $i_1$, получаем 
-
+подставляем значения для $i_2^\prime$ и $i_2$ в уравнение для $i_1$, получаем:
 $$
 i_1(t) = \frac{U}{R} - e^{-\alpha t}\frac{L}{R}\left[\left(-\left(\frac{U}{L}-\frac{R}{L}i_1(0) 
 - \alpha i_2(0)\right)\frac{\alpha}{\omega}  -\omega i_2(0)\right)\sin(\omega t)\right. +
@@ -661,7 +659,7 @@ $$
 \right)\sin(\omega t) 
 \right]
 $$
-
+вводим новую переменную $\tilde{i}_1 = i_1 - \frac{U}{R}$, которая описывает сдвиг системы отсчета где новый ноль соответствует установившемуся току для случая когда ключ постоянно разомкнут
 $$
 i_1(t)=\frac{U}{R} - e^{-\alpha t} \left[ -\tilde{i}_1(0)\cos(\omega t)  + 
 \left( \frac{\alpha}{\omega}\left(-\tilde{i}_1(0)\right) -i_2(0)\frac{\alpha^2}{\omega}\frac{L}{R}
@@ -669,9 +667,10 @@ i_1(t)=\frac{U}{R} - e^{-\alpha t} \left[ -\tilde{i}_1(0)\cos(\omega t)  +
 \right]
 $$
 
+заменяя $\frac{R}{L}=\frac{\alpha^2 + \omega^2}{2\alpha}$ получим:
 $$
-\tilde{i}_1(t) = e^{-\alpha t}\left[ \tilde{i}_1(0)\cos(\omega t) + \frac{\alpha}{\omega}\tilde{i}_1(0) + 
-\frac{2\alpha}{\omega} i_2(0)) \sin(\omega t)\right]
+\tilde{i}_1(t) = e^{-\alpha t}\left[ \tilde{i}_1(0)\cos(\omega t) + \left(\frac{\alpha}{\omega}\tilde{i}_1(0) + 
+\frac{2\alpha}{\omega} i_2(0)\right) \sin(\omega t)\right]
 $$
 
 \subsection{Дискретное преобразование Лапласа}
