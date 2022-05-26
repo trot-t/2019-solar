@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts}
+\usepackage{amssymb}
+\begin{document}
+
+
+According
+$$
+\begin{array}{lll}
+%\hline
+e^{\widetilde\alpha n} \cos\,\widetilde\omega n
+&\doteqdot& \frac{\displaystyle(e^q - e^{\widetilde\alpha}\cos\widetilde\omega)e^q}
+{\displaystyle e^{2q} - 2e^qe^{\widetilde\alpha}\cos\widetilde\omega + e^{2\widetilde\alpha}}\\
+\\
+e^{\widetilde\alpha n} \sin\,\widetilde\omega n&
+\doteqdot& \frac{\displaystyle e^qe^{\widetilde\alpha}\sin\widetilde\omega}
+{\displaystyle e^{2q} - 2e^qe^{\widetilde\alpha}\cos\widetilde\omega + e^{2\widetilde\alpha}}\\
+%\hline
+\end{array}
+$$
+
+and matrix in equation (4) we got:
+
+$$
+e^{2\widetilde\alpha} = e^{-2\alpha T}
+$$
+
+$$
+2\cos\widetilde\omega = 
+\left(e^{\alpha (1-\gamma)T} + e^{-\alpha (1-\gamma)T}\right)\cos(\omega \gamma T) + 
+\frac{\alpha}{\omega}\left(e^{\alpha (1-\gamma)T} - e^{-\alpha (1-\gamma)T}\right)\sin(\omega \gamma T)
+$$
+and change parts in brackets
+
+$$
+\widetilde\omega = \arccos\left[\cosh\left(\alpha(1-\gamma)T\right)
+\cos(\omega\gamma T) +
+\frac{\alpha}{\omega}
+\sinh\left(\alpha(1-\gamma)T\right)
+\sin(\omega\gamma T)
+\right]
+$$
+
+\begin{verbatim}
+on rounded;
+R:=1157.76;
+L:=0.102;
+C:=0.75*10^(-6);
+u:=85;
+
+g := 0.5;
+t := 0.0002;
+
+a:=1/(2*R*C);
+w := a*sqrt(4*R*R*C/L -1);
+
+wtilde:= acos(cosh(a*t*(1-g))*cos(g*w*t) + sinh(a*t*(1-g))*sin(g*w*t)*a/w);
+\end{verbatim}
+
+$$
+\cos\widetilde\omega = 0.941773223936
+$$
+$$
+\widetilde\omega = 0.342930829999
+$$
+
+For 
+$$
+\cos(\widetilde\omega n) = \cos(0.342930829999\: n)
+$$
+
+Whole period $n= \frac{2\pi}{0.342930829999} \approx 18$
+
+which correspond to graph (fig. 4) for ngspice,
+period of oscillations covers 18 ripples 
+\end{document}
+
