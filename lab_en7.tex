@@ -230,57 +230,85 @@ Direct current at the AVI input $I_d$       & $PA1$ & $-$     & Measuring module
 RMS-value of the first harmonic of the phase voltage $U_{L\:ph(1)}$ and phase current $I_{L\:ph(1)}$ at the output of the AVI& $PW1$ &  $U_{L\:ph(1)}\approx 300V;$ $I_{L\:ph(1)}\approx 2A$ & 
 Power meter
 \end{tabular}
+\caption{}
+\label{table:II}
 \end{table}
-Set the toggle switches SA2 and SA3 of the voltage (DN1 - DN2) and current (DT1 - DT2) sensors in the “Thyristor Converter” and “Frequency Converter” modules to position “2” (the filter is off). Set the required measurement limits on measuring instruments according to table. 2;
-Fig. 3. Schematic diagram for studying an autonomous voltage inverter when operating on an active-inductive load
+Set the toggle switches $SA2$ and $SA3$ of the voltage (ДН1 -- ДН2) and current (ДТ1 -- ДТ2) sensors in the “Thyristor Converter” and “Frequency Converter” modules to position “2” (the filter is off). Set the required measurement limits on measuring instruments according to table. \ref{table:II};
 
-\end{enumerate}
-\end{enumerate}
-6) take oscillograms of the first harmonic of the phase voltage unf(1) and current inf(1) at the output of the AI using an oscilloscope for a given load resistance Rн and control frequency f. To do this, connect the oscilloscope to the DT2 current sensor
-(channel CH2 - socket X12, connect the oscilloscope body to socket “1!” DT2) and voltage sensor DN2 (channel CH1 - socket X9). Perform the necessary operations specified in the order in which the installation was turned on. Use potentiometer RP1 in the “Frequency Converter” module to set the specified value of control frequency f, and switch SA1 in the “Load” module set the specified value of load resistance Rн.
+%Fig. 3. Schematic diagram for studying an autonomous voltage inverter when operating on an active-inductive load
 
-Table 3
-Measured signal
-Device designation
-| Device location
-(module name)
+\item take oscillograms of the first harmonic of the phase voltage $u_{L\:ph(1)}$ and current $i_{L\:ph(1)}$ at the output of the AVI using an oscilloscope for a given load resistance $R_L$ and control frequency $f$. To do this, connect the oscilloscope to the ДТ2 current sensor
+(channel $CH2$ -- socket $X12$, connect the oscilloscope corpus to socket “$\perp$” ДТ2) and voltage sensor ДН2 (channel $CH1$ -- socket $X9$). Perform the necessary operations specified in the order in which the installation was turned on. Use potentiometer $RP1$ in the “Frequency Converter” module to set the specified value of control frequency $f$, and switch $SA1$ in the “Load” module set the specified value of load resistance $R_L$.
 
-Instantaneous voltage value at the AIN input
-Thyristor converter
+\begin{table}[!ht]
+\begin{tabular}{p{0.45\textwidth}p{0.15\textwidth}p{0.30\textwidth}}
+\toprule
+Measured signal& Device designation& Device location (module name)\\
+\midrule
+Instantaneous voltage value at the AVI input $u_d$ & ДН1 & Thyristor converter\\
+\midrule
+Instantaneous current value at the AVI input $i_d$ & ДТ1 & Thyristor converter\\
+\midrule
+Instantaneous value of phase voltage at the output of the AVI $u_{L\:ph}$ & ДН2 & Frequency converter \\
+\midrule
+Instantaneous value of the phase current at the output of the AVI $i_{L\:ph}$ & ДТ2 & Frequency converter 
+\end{tabular}
+\caption{}
+\label{table:III}
+\end{table}
 
+First, look at the oscillograms with a wide bandwidth of the sensors (position “2” of the toggle switches $SA2$ and $SA3$ of the “Frequency Converter” module), and then, switching the toggle switches $SA2$ and $SA3$ of the sensors to position “1”, sketch the oscillograms of the first harmonics of the phase voltage $u_{L\:ph(1)}$ and current $i_{L\:ph(1)}$. 
+Pay attention to the phase shift between them (angle $\varphi$), as well as to the change in phase shift when the control frequency $f$ changes. 
+Don't forget to define the voltage, current and time scales taking into account the sensor coefficients;
 
-Instantaneous current value at the AIN input
-  Thyristor converter
+\item take oscillograms of voltage ud and current id at the input of the AVI at the same values of load resistance $R_L$ and control frequency $f$. 
+To do this, connect the oscilloscope to the current sensor ДТ1 (channel $CH2$ - socket $X18$, connect the oscilloscope body to socket “$\perp$” ДТ1) and the voltage sensor ДН1 (channel $CH1$ -- socket $X15$). 
+Explain the pulsed nature of the current consumed by the AVI at the input;
 
-Instantaneous value of phase voltage at the output of the AI
-Frequency converter
-
-Instantaneous value of the phase current at the output of the AI
-Frequency converter
-
-
-First, look at the oscillograms with a wide bandwidth of the sensors (position “2” of the toggle switches SA2 and SAZ of the “Frequency Converter” module), and then, switching the toggle switches SA2 and SAZ of the sensors to position “1”, sketch the oscillograms of the first harmonics of the phase voltage unf(1) and current inf(1). Pay attention to the phase shift between them (angle $\phi$), as well as to the change in phase shift when the control frequency f changes. Don't forget to define the voltage, current and time scales taking into account the sensor coefficients;
-
-c) take oscillograms of voltage ud and current id at the input of the AI at the same values of load resistance Rн and control frequency f. To do this, connect the oscilloscope to the current sensor DT1 (channel CH2 - socket X18, connect the oscilloscope body to socket “1” DT1) and the voltage sensor DN1 (channel CH1 - socket X15). Explain the pulsed nature of the current consumed by the AI at the input;
-
-D) remove the adjustment Unf(1) and energy characteristics of an autonomous voltage inverter when regulated according to the law U/f=const and a given value Rн. Change the frequency in the range of 10 - 50 Hz. To increase the measurement accuracy by eliminating interference, connect the zero point of the “Load” module (socket X7) to ground (socket N of the “Power module”).
+\item remove the regulating characteristics %adjustment
+ $U_{L\:ph(1)} = F(f), \mu = F(f)$ and energy characteristics $P_d = F(f), P_L = F(f), S_L = F(f),\cos\varphi_L = F(f), \eta_L = F(f)$ of an autonomous voltage inverter when regulated according to the law $U/f=const$ and a given value $R_L$. Change the frequency in the range of 10 -- 50 Hz. To increase the measurement accuracy by eliminating interference, connect the zero point of the “Load” module (socket $X7$) to ground (socket $N$ of the “Power module”).
 
 Record the following values and enter them into the table. 4:
 
-— f-frequency at the output of the AI;
+\begin{itemize}
+\item $f$ -- frequency at the output of the AI;
 
-— Ud,Id - constant voltage and current at the input of the AI, respectively;
+\item $U_d,I_d$ - constant voltage and current at the input of the AI, respectively;
 
-— Unf are the effective values of the first harmonic of the phase voltage and current at the output of the AI, respectively;
+\item $U_{L\:ph(1)}, I_{L\:ph(1)}$ are the RMS-values of the first harmonic of the phase voltage and current at the output of the AVI, respectively;
 
-— P, cos—phase power at the output of the AIN and SOZF converter, measured by the “Power Meter” module, respectively.
+\item $I_{L\:ph}, \cos\varphi_L$  -- phase power at the output of the AIN and $\cos\varphi$ converter, measured by the “Power Meter” module, respectively.
+\end{itemize}
+
+Output power
+\begin{equation}
+P_d = U_d\cdot I_d
+\end{equation}
+
+Active and full power at load
+\begin{equation}
+P_L = 3\cdot P_{L\:ph},\;\;\; S_L = 3\cdot U_{L\:ph}\cdot I_{L\:ph}
+\end{equation}
+ 
+
 Efficiency coefficient AIN
+\begin{equation}
+\eta_L = P_L/P_d
+\end{equation}
+
 
 Modulation factor
+\begin{equation}
+\mu = \frac{\sqrt{3}\sqrt{2}U_{L\:ph(1)}}{U_d}
+\end{equation}
 
 
-e) repeat experiment 2d with a different value of Rн specified by the teacher. Based on the data of experiments 2d,d, construct the dependences Unf(1)
 
+\item repeat experiment 2d with a different value of Rн specified by the teacher. Based on the data of experiments 2d,d, construct the dependences Unf(1)
+
+
+\end{enumerate}
+\end{enumerate}
 
 f) remove the external Unf(1) = F and the energy characteristics of an autonomous voltage inverter at a given frequency value f. To do this, use potentiometer RP1 in the “Frequency Converter” module to set the set frequency value f (frequency according to the device) and change the load current Inf with switch SA1 in the “Load” module. Record the same values as in experiment 2d, as well as the value of Rн.
 Enter the data into the table. 5;
