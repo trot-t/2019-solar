@@ -265,19 +265,19 @@ Don't forget to define the voltage, current and time scales taking into account 
 To do this, connect the oscilloscope to the current sensor ДТ1 (channel $CH2$ - socket $X18$, connect the oscilloscope body to socket “$\perp$” ДТ1) and the voltage sensor ДН1 (channel $CH1$ -- socket $X15$). 
 Explain the pulsed nature of the current consumed by the AVI at the input;
 
-\item remove the regulating characteristics %adjustment
+\item \label{enum:regul} take the regulating characteristics %adjustment
  $U_{L\:ph(1)} = F(f), \mu = F(f)$ and energy characteristics $P_d = F(f), P_L = F(f), S_L = F(f),\cos\varphi_L = F(f), \eta_L = F(f)$ of an autonomous voltage inverter when regulated according to the law $U/f=const$ and a given value $R_L$. Change the frequency in the range of 10 -- 50 Hz. To increase the measurement accuracy by eliminating interference, connect the zero point of the “Load” module (socket $X7$) to ground (socket $N$ of the “Power module”).
 
 Record the following values and enter them into the table. 4:
 
 \begin{itemize}
-\item $f$ -- frequency at the output of the AI;
+\item $f$ -- frequency at the output of the AVI;
 
-\item $U_d,I_d$ - constant voltage and current at the input of the AI, respectively;
+\item $U_d,I_d$ - constant voltage and current at the input of the AVI, respectively;
 
 \item $U_{L\:ph(1)}, I_{L\:ph(1)}$ are the RMS-values of the first harmonic of the phase voltage and current at the output of the AVI, respectively;
 
-\item $I_{L\:ph}, \cos\varphi_L$  -- phase power at the output of the AIN and $\cos\varphi$ converter, measured by the “Power Meter” module, respectively.
+\item $I_{L\:ph}, \cos\varphi_L$  -- phase power at the output of the AVI and $\cos\varphi$ converter, measured by the “Power Meter” module, respectively.
 \end{itemize}
 
 Output power
@@ -291,11 +291,10 @@ P_L = 3\cdot P_{L\:ph},\;\;\; S_L = 3\cdot U_{L\:ph}\cdot I_{L\:ph}
 \end{equation}
  
 
-Efficiency coefficient AIN
+Efficiency coefficient AVI
 \begin{equation}
 \eta_L = P_L/P_d
 \end{equation}
-
 
 Modulation factor
 \begin{equation}
@@ -303,71 +302,71 @@ Modulation factor
 \end{equation}
 
 
+\item \label{enum:different_regul} repeat experiment \ref{enum:regul} with a different value of $R_L$ specified by the teacher. 
+Based on the data of experiments \ref{enum:regul}, \ref{enum:different_regul} construct the dependences $U_{L\:ph(1)} = F(f); \mu = F(f); P_d = F(f); P_L = F(f); S_L = F(f); \cos\varphi_L = F(f); \eta = F(f);$
 
-\item repeat experiment 2d with a different value of Rн specified by the teacher. Based on the data of experiments 2d,d, construct the dependences Unf(1)
 
 
-\end{enumerate}
-\end{enumerate}
-
-f) remove the external Unf(1) = F and the energy characteristics of an autonomous voltage inverter at a given frequency value f. To do this, use potentiometer RP1 in the “Frequency Converter” module to set the set frequency value f (frequency according to the device) and change the load current Inf with switch SA1 in the “Load” module. Record the same values as in experiment 2d, as well as the value of Rн.
+\item \label{enum:external} take the external $U_{L\:ph(1)} = F{I_{L\:ph}}$ and the energy characteristics $P_d = F(I_{L\:ph}); P_L = F(I_{L\:ph}); S_L = F(I_{L\:ph}); \cos\varphi_L = F(I_{L\:ph}); \eta = F(I_{L\:ph})$  of an autonomous voltage inverter at a given frequency value $f$. 
+To do this, use potentiometer $RP1$ in the “Frequency Converter” module to set the set frequency value $f$ (frequency according to the device) and change the load current $I_{L\:ph}$ with switch $SA1$ in the “Load” module. 
+Record the same values as in experiment \ref{enum:regul}, as well as the value of $R_L$.
 Enter the data into the table. 5;
+\item \label{enum:different_external}repeat experiment \ref{enum:external} with a different value of $f$ specified by the teacher. Based on the data of experiments \ref{enum:external}, \ref{enum:different_external} 
+construct the dependences $U_{L\:ph(1)} = F{I_{L\:ph}}, P_d = F(I_{L\:ph}); P_L = F(I_{L\:ph}); S_L = F(I_{L\:ph}); \cos\varphi_L = F(I_{L\:ph}); \eta = F(I_{L\:ph})$.
 
-g) repeat experiment 2e with a different value of f specified by the teacher. Based on the data of experiments 2 f, g, construct the dependences Unf
+\end{enumerate}
+\end{enumerate}
 
+Turn off the $SA1$ toggle switch of the “Frequency Converter” module, the “Network” toggle switch of the “Power Meter” module, as well as the $QF2$ “Power Module” and $QF1$ “Bench Power Module” circuit breakers.
 
-Turn off the SA1 toggle switch of the “Frequency Converter” module, the “Network” toggle switch of the “Power Meter” module, as well as the QF2 “Power Module” and QF1 “Bench Power Module” circuit breakers.
-Contents of the report
+\subsection{Contents of the report}
 
 The report should contain the following points:
 
-a) name and purpose of the work;
+\begin{enumerate}
+\item name and purpose of the work;
 
-6) electrical circuit diagrams for performing experiments;
+\item electrical circuit diagrams for performing experiments;
 
-c) the results of experimental studies and calculations based on them,
-placed in the appropriate tables;
+\item the results of experimental studies and calculations based on them, placed in the appropriate tables;
 
-D) experimentally measured and constructed characteristics;
+\item experimentally measured and constructed characteristics;
 
-e) processed oscillograms;
+\item processed oscillograms;
 
-©) comparison of experimental results and preliminary calculations;
+\item comparison of experimental results and preliminary calculations;
 
-g) conclusions from the work:
+\item conclusions from the work:
 
-— Indicate which modulation method is used in the AIN;
+\begin{itemize}
+\item[-] Indicate which modulation method is used in the AVI;
 
-— explain the influence of load current on the regulating characteristics of the AUV;
+\item[-] explain the influence of load current on the regulating characteristics of the AVI;
 
-— explain the influence of control frequency and load current on energy
-AIN indicators.
+\item[-] explain the influence of control frequency and load current on energy AVI indicators.
+\end{itemize}
+\end{enumerate}
 
-Control questions
-
-12.What is the difference between a slave and an autonomous inverter?
-13.What is the difference between an autonomous voltage inverter and an autonomous inverter?
-current?
-14.Why are reverse diodes turned on in voltage inverters?
-15.Why is there a capacitor at the input of the AI?
-16.How to change the output frequency of a stand-alone inverter?
-17.What depends on the carrier frequency?
-18. Show the contours of current flow in a three-phase AIN.
-19.How is the shape and magnitude of the voltage in the AIN regulated?
-20. Compare the methods of generating phase voltages in three-phase AIN according to
-maximum achievable voltages and switching losses.
-21. Which autonomous inverters are most promising in electric drives in
-present time?
-22. What is the type of external characteristic of AIN? What does the slope of the characteristic depend on?
-
-23. How to remove an external characteristic?
-
-24. What is the regulating (frequency) characteristic of an autonomous inverter?
-
-25. What type and why does the regulating (frequency) characteristic of the AIN for an electric drive have?
-26. How to remove the adjustment (frequency) characteristic?
-27. What determines the non-sinusoidal coefficient of the load current curve?
-28. How to determine the efficiency of an AIN?
-29. The procedure for turning on and off the laboratory installation.
+\subsection{Control questions}
+\begin{enumerate}
+\item What is the difference between a slave and an autonomous inverter?
+\item What is the difference between an autonomous voltage inverter and an autonomous current inverter?
+\item Why are reverse diodes turned on in voltage inverters?
+\item Why is there a capacitor at the input of the AVI?
+\item How to change the output frequency of a stand-alone inverter?
+\item What depends on the carrier frequency?
+\item Show the contours of current flow in a three-phase AIN.
+\item How is the shape and magnitude of the voltage in the AIN regulated?
+\item Compare the methods of generating phase voltages in three-phase AIN according to maximum achievable voltages and switching losses.
+\item Which autonomous inverters are most promising in electric drives in present time?
+\item What is the type of external characteristic of AIN? What does the slope of the characteristic depend on?
+\item How to remove an external characteristic?
+\item What is the regulating (frequency) characteristic of an autonomous inverter?
+\item What type and why does the regulating (frequency) characteristic of the AIN for an electric drive have?
+\item How to remove the adjustment (frequency) characteristic?
+\item What determines the non-sinusoidal coefficient of the load current curve?
+\item How to determine the efficiency of an AIN?
+\item The procedure for turning on and off the laboratory installation.
+\end{enumerate}
 
 \end{document}
