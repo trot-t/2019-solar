@@ -215,8 +215,8 @@ U_{L\:lin(1)} = \mu U_{L\:lin(1)max},  \;\; U_{L\:ph(1)} = \mu U_{L\:ph(1)max}
 \begin{enumerate}
 \item assemble a circuit for studying a three-phase AIN when operating on an active-inductive load in accordance with Fig. 3. Additional jumpers and measuring instruments connected to the circuit are shown with a dashed line.
 
-In table 2 shows measuring instruments, and table. 3 current and voltage sensors used in laboratory work, in accordance with the accepted designations on the circuit diagram (see Fig. 3).
-table 2
+In table \ref{table:II} shows measuring instruments, and table \ref{table:III} current and voltage sensors used in laboratory work, in accordance with the accepted designations on the circuit diagram (see Fig. \ref{fig:full}).
+
 
 \begin{table}[!ht]
 \begin{tabular}{p{0.35\textwidth}p{0.15\textwidth}p{0.25\textwidth}p{0.25\textwidth}}
@@ -233,7 +233,14 @@ Power meter
 \caption{}
 \label{table:II}
 \end{table}
-Set the toggle switches $SA2$ and $SA3$ of the voltage (ДН1 -- ДН2) and current (ДТ1 -- ДТ2) sensors in the “Thyristor Converter” and “Frequency Converter” modules to position “2” (the filter is off). Set the required measurement limits on measuring instruments according to table. \ref{table:II};
+Set the toggle switches $SA2$ and $SA3$ of the voltage (ДН1 -- ДН2) and current (ДТ1 -- ДТ2) sensors in the “Thyristor Converter” and “Frequency Converter” modules to position “2” (the filter is off). Set the required measurement limits on measuring instruments according to table \ref{table:II};
+
+\begin{figure}[!ht]
+\centering
+    \includegraphics[width=5.5in]{lab7_fig3}
+    \caption{Schematic diagram for studying an autonomous voltage inverter when operating on an active-inductive load}
+    \label{fig:full}
+\end{figure}
 
 %Fig. 3. Schematic diagram for studying an autonomous voltage inverter when operating on an active-inductive load
 
@@ -268,7 +275,7 @@ Explain the pulsed nature of the current consumed by the AVI at the input;
 \item \label{enum:regul} take the regulating characteristics %adjustment
  $U_{L\:ph(1)} = F(f), \mu = F(f)$ and energy characteristics $P_d = F(f), P_L = F(f), S_L = F(f),\cos\varphi_L = F(f), \eta_L = F(f)$ of an autonomous voltage inverter when regulated according to the law $U/f=const$ and a given value $R_L$. Change the frequency in the range of 10 -- 50 Hz. To increase the measurement accuracy by eliminating interference, connect the zero point of the “Load” module (socket $X7$) to ground (socket $N$ of the “Power module”).
 
-Record the following values and enter them into the table. 4:
+Record the following values and enter them into the table \ref{table:IV}:
 
 \begin{itemize}
 \item $f$ -- frequency at the output of the AVI;
@@ -279,6 +286,40 @@ Record the following values and enter them into the table. 4:
 
 \item $I_{L\:ph}, \cos\varphi_L$  -- phase power at the output of the AVI and $\cos\varphi$ converter, measured by the “Power Meter” module, respectively.
 \end{itemize}
+
+
+\begin{table}[ht!]
+\centering
+\begin{tabular}{p{0.20\textwidth}|p{0.09\textwidth}|p{0.09\textwidth}|p{0.09\textwidth}|p{0.09\textwidth}|p{0.09\textwidth}|p{0.17\textwidth} }
+\toprule
+$f$, Hz & & & & & & Note \\
+\midrule
+$U_d$, V & & & & & & \multirow{11}*{$R_L=$} \\
+\cmidrule{1-6}
+$I_d$, A  & & & & & & \\
+\cmidrule{1-6}
+$U_{L\:ph(1)}$, V & & & & & & \\
+\cmidrule{1-6}
+$I_{L\:ph(1)}$, A & & & & & & \\
+\cmidrule{1-6}
+$P_{L\:ph(1)}$, Wt & & & & & & \\
+\cmidrule{1-6}
+$\cos\varphi$ & & & & & & \\
+\cmidrule{1-6}
+$P_d$, Wt & & & & & & \\
+\cmidrule{1-6}
+$P_L$, Wt & & & & & & \\
+\cmidrule{1-6}
+$P_L$, Wt & & & & & & \\
+\cmidrule{1-6}
+$\eta_L$ & & & & & & \\
+\cmidrule{1-6}
+$\mu$ & & & & & & \\
+\bottomrule
+\end{tabular}
+\caption{}
+\label{table:IV}
+\end{table}
 
 Output power
 \begin{equation}
@@ -310,7 +351,7 @@ Based on the data of experiments \ref{enum:regul}, \ref{enum:different_regul} co
 \item \label{enum:external} take the external $U_{L\:ph(1)} = F{I_{L\:ph}}$ and the energy characteristics $P_d = F(I_{L\:ph}); P_L = F(I_{L\:ph}); S_L = F(I_{L\:ph}); \cos\varphi_L = F(I_{L\:ph}); \eta = F(I_{L\:ph})$  of an autonomous voltage inverter at a given frequency value $f$. 
 To do this, use potentiometer $RP1$ in the “Frequency Converter” module to set the set frequency value $f$ (frequency according to the device) and change the load current $I_{L\:ph}$ with switch $SA1$ in the “Load” module. 
 Record the same values as in experiment \ref{enum:regul}, as well as the value of $R_L$.
-Enter the data into the table. 5;
+Enter the data into the table \ref{table:V};
 \item \label{enum:different_external}repeat experiment \ref{enum:external} with a different value of $f$ specified by the teacher. Based on the data of experiments \ref{enum:external}, \ref{enum:different_external} 
 construct the dependences $U_{L\:ph(1)} = F{I_{L\:ph}}, P_d = F(I_{L\:ph}); P_L = F(I_{L\:ph}); S_L = F(I_{L\:ph}); \cos\varphi_L = F(I_{L\:ph}); \eta = F(I_{L\:ph})$.
 
@@ -318,6 +359,40 @@ construct the dependences $U_{L\:ph(1)} = F{I_{L\:ph}}, P_d = F(I_{L\:ph}); P_L 
 \end{enumerate}
 
 Turn off the $SA1$ toggle switch of the “Frequency Converter” module, the “Network” toggle switch of the “Power Meter” module, as well as the $QF2$ “Power Module” and $QF1$ “Bench Power Module” circuit breakers.
+
+\begin{table}[ht!]
+\centering
+\begin{tabular}{p{0.20\textwidth}|p{0.09\textwidth}|p{0.09\textwidth}|p{0.09\textwidth}|p{0.09\textwidth}|p{0.09\textwidth}|p{0.17\textwidth} }
+\toprule
+$R_L$, Ohm & & & & & & Note \\
+\midrule
+$U_d$, V & & & & & & \multirow{11}*{$f=$} \\
+\cmidrule{1-6}
+$I_d$, A  & & & & & & \\
+\cmidrule{1-6}
+$U_{L\:ph(1)}$, V & & & & & & \\
+\cmidrule{1-6}
+$I_{L\:ph(1)}$, A & & & & & & \\
+\cmidrule{1-6}
+$P_{L\:ph(1)}$, Wt & & & & & & \\
+\cmidrule{1-6}
+$\cos\varphi$ & & & & & & \\
+\cmidrule{1-6}
+$P_d$, Wt & & & & & & \\
+\cmidrule{1-6}
+$P_L$, Wt & & & & & & \\
+\cmidrule{1-6}
+$P_L$, Wt & & & & & & \\
+\cmidrule{1-6}
+$\eta_L$ & & & & & & \\
+\cmidrule{1-6}
+$\mu$ & & & & & & \\
+\bottomrule
+\end{tabular}
+\caption{}
+\label{table:V}
+\end{table}
+
 
 \subsection{Contents of the report}
 
@@ -355,17 +430,17 @@ The report should contain the following points:
 \item Why is there a capacitor at the input of the AVI?
 \item How to change the output frequency of a stand-alone inverter?
 \item What depends on the carrier frequency?
-\item Show the contours of current flow in a three-phase AIN.
-\item How is the shape and magnitude of the voltage in the AIN regulated?
+\item Show the contours of current flow in a three-phase AVI.
+\item How is the shape and magnitude of the voltage in the AVI regulated?
 \item Compare the methods of generating phase voltages in three-phase AIN according to maximum achievable voltages and switching losses.
 \item Which autonomous inverters are most promising in electric drives in present time?
-\item What is the type of external characteristic of AIN? What does the slope of the characteristic depend on?
+\item What is the type of external characteristic of AVI? What does the slope of the characteristic depend on?
 \item How to remove an external characteristic?
 \item What is the regulating (frequency) characteristic of an autonomous inverter?
-\item What type and why does the regulating (frequency) characteristic of the AIN for an electric drive have?
+\item What type and why does the regulating (frequency) characteristic of the AVI for an electric drive have?
 \item How to remove the adjustment (frequency) characteristic?
 \item What determines the non-sinusoidal coefficient of the load current curve?
-\item How to determine the efficiency of an AIN?
+\item How to determine the efficiency of an AVI?
 \item The procedure for turning on and off the laboratory installation.
 \end{enumerate}
 
