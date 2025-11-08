@@ -87,7 +87,7 @@ The lab is turned on by the switch $S1$ (fig. \ref{labsetup}), and the preparati
 power supply circuit power supply -- by connection the $XP1$ plug connector in the socket $XS1$ or $XS2$ and turn
 switch $S4$ to the appropriate position. The SPD under review (thyristor VS1) is connected to terminals $X1-X4$.
 
-The voltage and current of the power circuit of the SPP are regulated by the T1 autotransformer. 
+The voltage and current of the power circuit of the SPP are regulated by the $AT$ autotransformer. 
 SPD control current adjustment
 carried out by potentiometer $R1$ (roughly) and rheostat $R2$ (accurately). Values  control current and voltage
 are determined by a voltmeter $PVЗ$ and an ammeter $PA3$.
@@ -120,21 +120,21 @@ negative half-wave voltage applied to the diode $VD3$ and SPD, which ensures the
 through SPD in only one direction. To observe the shape of the curves of the anode voltage and current input
 the oscilloscope is connected to terminals $X6-X5$ and $X6-X7$, respectively.
 
-To observe the static current-voltage characteristics of the SPD in the closed state, the $S2$ switch connects
+To observe the static volt-ampere characteristics of the SPD in the closed state, the $S2$ switch connects
 filter capacitor $C$, which provides power to the DC power circuit with a constant voltage.
 
 To turn on the power supplies of the power circuit of the SPD it is necessary:
 
 \begin{itemize}
 \item set switch $S4$ and plug connector $SP1$ to the desired position (upper or lower);
-\item set the autotransformer $T1$ to the lower position;
+\item set the autotransformer $AT$ to the lower position;
 \item turn on the switch $S1$ and the power supply of the control circuit;
 \item by pressing the $SB$ button, turn on the relay $K2$, 
 the contacts of which close the power supply circuit of the SPD.
 \end{itemize}
 
 The voltage relay $K3$ prevents the relay $K2$ from turning on when there is voltage at the output 
-of the autotransformer $T1$.
+of the autotransformer $AT$.
 The sensitive current relay $K1$ traps the relay K2 in case of a dangerous increase in the leakage current 
 of the SPD preventing it damage. When the connector $SP1$ is switched, 
 the power supply circuit of relay coil $K2$ opens, therefore
@@ -164,16 +164,16 @@ $I_{ctrl} = f(U_{ctrl})$.
 $I_a = f(U_a)$ in the open state.
 
 
-Sketch from the oscilloscope screen a direct branch of the dynamic current-voltage characteristic of the thyristor
+Sketch from the oscilloscope screen a direct branch of the dynamic volt-ampere characteristic of the thyristor
 in the open state $I_a=f(U_a)$ and the curves of the anode current $I_a=f(\omega t)$ 
 and voltage $U_a = f(\omega t)$ at the maximum anode current.
 
 \item Determine the pulse voltage in the open state, the value of the threshold voltage $U_0$
 and differential resistance $Rd$.
 
-\item observe and draw the direct and inverse branches of the classification 
+\item Observe and draw the direct and inverse branches of the classification 
 $I_{a.av} = f (U_{a\: max})$ and static $I_{a.st} = f (U_{a.st})$
-current-voltage characteristics of the thyristor in the closed state at the following current values
+volt-ampere characteristics of the thyristor in the closed state at the following current values
 control: $I_{ctrl} = 0$; $I_{ctrl} = 0.9 I_{ctrl\:o}$; $I_{ctrl} = 2.0 I_{ctrl\:o}$.
 
 In the classification scheme, draw from the oscilloscope screen
@@ -189,7 +189,7 @@ reverse ($I_{reverse\:\:leak}$) leakage currents.
 \subsection{Methodological instructions to accoplish the task}
 
 \begin{enumerate}
-\item The static current-voltage characteristic of the control circuit of the SPD is observed on a direct current
+\item The static volt-ampere characteristic of the control circuit of the SPD is observed on a direct current
 in the absence of the main (anode) voltage.
 
 \item The values of the unlocking current and unlocking voltage control are determined in the circuit
@@ -199,13 +199,13 @@ For this, it is necessary to set the average value at zero value of the control 
 the main (anode) voltage ($PV2$) 1.5 V and, gradually increasing the current and control voltage,
 fix their values at the moment of the appearance of the main (anode) current (according to $PA$2).
 
-\item Classification current-voltage characteristics of the power circuit of the SPD are observed at average values
+\item Classification volt-ampere characteristics of the power circuit of the SPD are observed at average values
 half-wave voltage and current according to the readings of $PV2$ and $PA2$ devices at a control current equal to
 1.2 $I_{ctrl\:\:o}$. Since the rated (classification) current of the tested SPD under natural cooling
 equal to 6 A, the observing characteristics from 6 to 10 A in order to avoid overheating of the semiconductor structure
 need to produce fast.
 
-\item The observation of the direct branch of the dynamic current-voltage characteristics of the SPD 
+\item The observation of the direct branch of the dynamic volt-ampere characteristics of the SPD 
 in a state of high conductivity
 produced from the screen of the oscilloscope when a signal 
 is fed “vertically” to the input of the oscilloscope amplifier,
@@ -229,7 +229,7 @@ a horizontal segment and an inclined beam crossing the characteristic at points 
 $1.5 I_{m\:\: nom}$,
 where $I_{m\:\: nom} = 6\: A$ is the amplitude of the rated current STP.
 
-\item To avoid damaging of the device when taking the current-voltage characteristics in the closed state
+\item To avoid damaging of the device when taking the volt-ampere characteristics in the closed state
 the applied voltage is increased smoothly, carefully fixing the increment of the leakage current and stopping
 further increase in voltage, as soon as at a certain value of $U_{zigzag}$
 a sharp increase in current begins.
@@ -250,7 +250,7 @@ $I_a = f (\omega t)$ is produced at voltages close to $U_{zigzag}$.
 \item The rated voltage of the SPD is determined as follows:
 
 \begin{enumerate}
-\item according to the current-voltage characteristic in the low conductivity state taken at $I_{ctrl} = 0$, 
+\item according to the volt-ampere characteristic in the low conductivity state taken at $I_{ctrl} = 0$, 
 the amplitude voltage values $\pm U_{zigzag}$;
 
 \item the smaller of the stresses / + Usag / and / -Usag / Multiplied by the safety factor, the numerical value of which
@@ -268,7 +268,7 @@ produced in 0.5.
 \item The holding current of the SPD is determined in the circuit designed for observing the direct 
 branch of the static volt-ampere
 characteristics in a state of low conductivity. For this, at zero anode voltage
-the control current is set equal to $1.5 I_{ctrl\:\:o}$; by adjusting the autotransformer $T1$, 
+the control current is set equal to $1.5 I_{ctrl\:\:o}$; by adjusting the autotransformer $AT$, 
 the anode current is set
 at the maximum mark of the ammeter scale $PA1$, after which the control current decreases to zero and with a smooth
 reducing the anode current by adjusting $T1$, its value ($I_{ctrl\: d}$) is fixed at the moment 
